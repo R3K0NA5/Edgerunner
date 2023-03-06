@@ -2,23 +2,30 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScoreController;
+use App\Http\Controllers\SpriteController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () {return view('welcome');});
 
 Route::get('/game', function () {
     return view('game');
 });
-Route::post('/score', [ScoreController::class, 'store'])->name('score.store');
-/*Route::get('/score', function (Illuminate\Http\Request $request) {
-    $score = $request->query('score');
-    return view('score', ['score' => $score]);
+
+
+
+/*Route::get('/testas', function () {
+    return view('score');
 });*/
+
+/*Route::get('/sprite', function () {});*/
+Route::get('/sprite/{sprite}', [SpriteController::class, 'index'])->name('score');
+Route::post('/score', [ScoreController::class, 'store'])->name('score.store');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

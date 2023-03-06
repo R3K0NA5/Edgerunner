@@ -21,7 +21,10 @@ class AdminUserSeed extends Seeder
             [
                 'name' => 'Admin',
                 'password' => bcrypt('admin'),
-            ]
+            ],
+            [
+            'sprite_id' => '1',
+            ],
         );
 
     }

@@ -86,58 +86,83 @@ class Projectile {
 }
 const projectiles = []
 const gravity = 0.1
-const player = new Player({
-    position: {
-        x: 100,
-        y: 700,
+
+
+
+
+
+
+
+function createPlayer(x, y, imageSrc, animations) {
+    return new Player({
+        position: {
+            x,
+            y,
+        },
+        collisionBlocks,
+        platformCollisionBlocks,
+        imageSrc,
+        frameRate: 8,
+        animations,
+    });
+
+
+
+}
+const player1 = createPlayer(
+    100, 700, '../img/soldier/idle.png', {
+    Idle: {
+        imageSrc: '../img/soldier/idle.png',
+        frameRate: 8,
+        frameBuffer: 200,
     },
-    collisionBlocks,
-    platformCollisionBlocks,
-    imageSrc: '../img/soldier/idle.png',
-    frameRate: 8,
-    animations: {
-        Idle: {
-            imageSrc: '../img/soldier/idle.png',
-            frameRate: 8,
-            frameBuffer: 200,
-        },
-        Run: {
-            imageSrc: '../img/soldier/begimas.png',
-            frameRate: 8,
-            frameBuffer: 12,
-        },
-        Jump: {
-            imageSrc: '../img/soldier/begimas.png',
-            frameRate: 8,
-            frameBuffer: 200,
-        },
-        Fall: {
-            imageSrc: '../img/soldier/falling.png',
-            frameRate: 8,
-            frameBuffer: 200,
-        },
-        FallLeft: {
-            imageSrc: '../img/soldier/fallingk.png',
-            frameRate: 8,
-            frameBuffer: 200,
-        },
-        RunLeft: {
-            imageSrc: '../img/soldier/begimask.png',
-            frameRate: 8,
-            frameBuffer: 12,
-        },
-        IdleLeft: {
-            imageSrc: '../img/soldier/idlek.png',
-            frameRate: 8,
-            frameBuffer: 200,
-        },
-        JumpLeft: {
-            imageSrc: '../img/soldier/jumpk.png',
-            frameRate: 8,
-            frameBuffer: 200,
-        },
+    Run: {
+        imageSrc: '../img/soldier/begimas.png',
+        frameRate: 8,
+        frameBuffer: 12,
     },
-})
+    Jump: {
+        imageSrc: '../img/soldier/begimas.png',
+        frameRate: 8,
+        frameBuffer: 200,
+    },
+    Fall: {
+        imageSrc: '../img/soldier/falling.png',
+        frameRate: 8,
+        frameBuffer: 200,
+    },
+    FallLeft: {
+        imageSrc: '../img/soldier/fallingk.png',
+        frameRate: 8,
+        frameBuffer: 200,
+    },
+    RunLeft: {
+        imageSrc: '../img/soldier/begimask.png',
+        frameRate: 8,
+        frameBuffer: 12,
+    },
+    IdleLeft: {
+        imageSrc: '../img/soldier/idlek.png',
+        frameRate: 8,
+        frameBuffer: 200,
+    },
+    JumpLeft: {
+        imageSrc: '../img/soldier/jumpk.png',
+        frameRate: 8,
+        frameBuffer: 200,
+    },
+});
+
+
+let player = player1;
+
+
+
+
+
+
+
+
 function createEnemy(x, y, imageSrc, frameRate,frameBuffer) {
     return new Enemy({
         position: {
@@ -151,18 +176,8 @@ function createEnemy(x, y, imageSrc, frameRate,frameBuffer) {
     });
 }
 const enemy1 = createEnemy(300, 700, '../img/soldier/idle.png', 8,200);
-const enemy2 = createEnemy(600, 700, '../img/soldier/idle.png', 8);
-const enemy3 = createEnemy(900, 700, '../img/soldier/idle.png', 8);
-const enemy4 = createEnemy(1200, 700, '../img/soldier/idle.png', 8);
-const enemy5 = createEnemy(1500, 700, '../img/soldier/idle.png', 8);
-const enemy6 = createEnemy(1800, 700, '../img/soldier/idle.png', 8);
-const enemy7 = createEnemy(2000, 700, '../img/soldier/idle.png', 8);
-const enemy8 = createEnemy(2500, 700, '../img/soldier/idle.png', 8);
-const enemy9 = createEnemy(3000, 700, '../img/soldier/idle.png', 8);
-const enemy10 = createEnemy(3400, 700, '../img/soldier/idle.png', 8);
-const enemy11 = createEnemy(3800, 700, '../img/soldier/idle.png', 8);
-const enemy12 = createEnemy(4200, 700, '../img/soldier/idle.png', 8);
-const enemies = [ enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8, enemy9, enemy10, enemy11, enemy12 ];
+const enemy2 = createEnemy(600, 700, '../img/soldier/idle.png', 8,200);
+const enemies = [ enemy1, enemy2,];
 const keys = {
     d: {
         pressed: false,
@@ -267,31 +282,30 @@ function animate() {
     c.font = '20px Arial';
     c.fillText(`Score: ${score}`, 10, 30);
     c.restore()
-
 }
 animate()
+
 window.addEventListener('keydown', (event) => {
     switch (event.key) {
         case 'd':
-            keys.d.pressed = true;
-            break;
+            keys.d.pressed = true
+            break
         case 'a':
-            keys.a.pressed = true;
-            break;
+            keys.a.pressed = true
+            break
         case 'w':
-            player.velocity.y = -4;
-            break;
+            player.velocity.y = -4
+            break
         case ' ':
-            console.log('space');
-            projectiles.push(new Projectile({
+            console.log('space')
+            projectiles.push (new Projectile({
                 position: { x: player.position.x + player.width, y: player.position.y +50 },
                 velocity: { x:10, y: 0 },
-                camerabox: player.camerabox,
-            }));
-            break;
-
+                camerabox: player.camerabox, // pass the camerabox to the constructor
+            }))
+            break
     }
-});
+})
 window.addEventListener('keyup', (event) => {
     switch (event.key) {
         case 'd':
@@ -302,26 +316,3 @@ window.addEventListener('keyup', (event) => {
             break
     }
 })
-const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-window.addEventListener('keydown', function(event) {
-    if (event.key === 'l') {
-        // Send a POST request to the score endpoint with the CSRF token
-        fetch('/score', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': csrfToken
-            },
-            body: JSON.stringify({ score: score })
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data); // add this line
-                // handle success
-            })
-            .catch(error => {
-                // handle error
-            });
-    }
-});

@@ -16,7 +16,7 @@
 </head>
 <body>
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<canvas></canvas>
+<canvas id="game-canvas" data-sprite-id="{{ auth()->user()->sprite_id }}" ></canvas>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{{ asset('/js/utils.js') }}"></script>
 <script src="{{ asset('/js/classes/CollisionBlock.js') }}"></script>
