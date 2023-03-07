@@ -128,6 +128,7 @@ class Player extends Sprite {
     }
 
     update() {
+        console.log('update method called');
         this.updateFrames()
         this.updateHitbox()
 

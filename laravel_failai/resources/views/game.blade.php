@@ -1,3 +1,5 @@
+
+{{--@include('layouts.header')--}}
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +17,7 @@
     </style>
 </head>
 <body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <canvas id="game-canvas" data-sprite-id="{{ auth()->user()->sprite_id }}" ></canvas>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

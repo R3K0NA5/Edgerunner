@@ -9,17 +9,16 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {return view('welcome');});
+Route::get('/', function () {return view('welcome');})->name('homepage');
 
-Route::get('/game', function () {
-    return view('game');
-});
+Route::get('/game', function () {return view('game');})->name('game');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 
-/*Route::get('/testas', function () {
-    return view('score');
-});*/
 
 /*Route::get('/sprite', function () {});*/
 Route::get('/sprite/{sprite}', [SpriteController::class, 'index'])->name('score');

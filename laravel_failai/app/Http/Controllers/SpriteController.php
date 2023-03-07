@@ -7,9 +7,10 @@ use App\Models\Sprite;
 
 class SpriteController extends Controller
 {
-    public function index(Sprite $sprite)
+    public function index($id)
     {
-        return new SpriteResource(collect([$sprite]));
+        $sprite = Sprite::find($id);
+        return new SpriteResource($sprite);
     }
 }
 /*class SpriteController extends Controller

@@ -5,65 +5,64 @@ namespace App\Http\Resources;
 
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class SpriteResource extends ResourceCollection
+class SpriteResource extends JsonResource
 {
     /**
-     * Transform the resource collection into an array.
+     * Transform the resource into an array.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function toArray($request)
     {
-        return collect($this->collection)->map(function ($sprite) {
-            return [
-                'id' => $sprite->id,
-                'imageSrc' => $sprite->imgIdle,
-                'animations' => [
-                    'Idle' => [
-                        'imageSrc' => $sprite->imgIdle,
-                        'frameRate' => 8,
-                        'frameBuffer' => 200,
-                    ],
-                    'Run' => [
-                        'imageSrc' => $sprite->imgIdle,
-                        'frameRate' => 8,
-                        'frameBuffer' => 12,
-                    ],
-                    'Jump' => [
-                        'imageSrc' => $sprite->imgIdle,
-                        'frameRate' => 8,
-                        'frameBuffer' => 200,
-                    ],
-                    'Fall' => [
-                        'imageSrc' => $sprite->imgIdle,
-                        'frameRate' => 8,
-                        'frameBuffer' => 200,
-                    ],
-                    'FallLeft' => [
-                        'imageSrc' => $sprite->imgIdle,
-                        'frameRate' => 8,
-                        'frameBuffer' => 200,
-                    ],
-                    'RunLeft' => [
-                        'imageSrc' => $sprite->imgIdle,
-                        'frameRate' => 8,
-                        'frameBuffer' => 12,
-                    ],
-                    'IdleLeft' => [
-                        'imageSrc' => $sprite->imgIdle,
-                        'frameRate' => 8,
-                        'frameBuffer' => 200,
-                    ],
-                    'JumpLeft' => [
-                        'imageSrc' => $sprite->imgIdle,
-                        'frameRate' => 8,
-                        'frameBuffer' => 200,
-                    ],
+        return [
+            'id' => $this->id,
+            'imageSrc' => $this->imgIdle,
+            'animations' => [
+                'Idle' => [
+                    'imageSrc' => $this->imgIdle,
+                    'frameRate' => 8,
+                    'frameBuffer' => 200,
                 ],
-            ];
-        })->toArray();
+                'Run' => [
+                    'imageSrc' => $this->imgRun,
+                    'frameRate' => 8,
+                    'frameBuffer' => 12,
+                ],
+                'Jump' => [
+                    'imageSrc' => $this->imgJump,
+                    'frameRate' => 8,
+                    'frameBuffer' => 200,
+                ],
+                'Fall' => [
+                    'imageSrc' => $this->imgFall,
+                    'frameRate' => 8,
+                    'frameBuffer' => 200,
+                ],
+                'FallLeft' => [
+                    'imageSrc' => $this->imgFallLeft,
+                    'frameRate' => 8,
+                    'frameBuffer' => 200,
+                ],
+                'RunLeft' => [
+                    'imageSrc' => $this->imgRunLeft,
+                    'frameRate' => 8,
+                    'frameBuffer' => 12,
+                ],
+                'IdleLeft' => [
+                    'imageSrc' => $this->imgIdleLeft,
+                    'frameRate' => 8,
+                    'frameBuffer' => 200,
+                ],
+                'JumpLeft' => [
+                    'imageSrc' => $this->imgJumpLeft,
+                    'frameRate' => 8,
+                    'frameBuffer' => 200,
+                ],
+            ],
+        ];
     }
 }
 
