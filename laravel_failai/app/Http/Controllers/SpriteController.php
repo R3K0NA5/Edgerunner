@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\SpriteResource;
 use App\Models\Sprite;
+use Illuminate\Http\Request;
 
 class SpriteController extends Controller
 {
@@ -12,6 +13,7 @@ class SpriteController extends Controller
         $sprite = Sprite::find($id);
         return new SpriteResource($sprite);
     }
+
 }
 /*class SpriteController extends Controller
 {

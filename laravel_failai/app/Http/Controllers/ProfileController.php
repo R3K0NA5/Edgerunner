@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Sprite;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -56,5 +57,31 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function changeSprite(Request $request)
+    {
+        $user = $request->user();
+        $spriteId = $request->input('sprite_id');
+
+        // Check if the user has enough score to change sprite
+        $score = $user->scores()->sum('score');
+        if ($score < 200) {
+            return redirect()->back()->with('error', 'You do not have enough score to change sprite');
+        }
+
+        // Update the user's sprite_id
+        $user->sprite_id = $spriteId;
+        $user->save();
+
+        // Subtract 100 points from the user's score
+        $user->scores()->create(['score' => -100]);
+
+        return redirect()->back()->with('success', 'Sprite changed successfully');
+    }
+    public function showChangeSpriteForm()
+    {
+        $sprites = Sprite::all();
+        return view('change_sprite', compact('sprites'));
     }
 }

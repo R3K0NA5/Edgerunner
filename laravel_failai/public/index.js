@@ -3,8 +3,8 @@ const c = canvas.getContext('2d')
 canvas.width = 1000
 canvas.height = 1000
 const scaledCanvas = {
-    width: canvas.width ,
-    height: canvas.height ,
+    width: canvas.width,
+    height: canvas.height,
 }
 const floorCollisions2D = []
 for (let i = 0; i < floorCollisions.length; i += 800) {
@@ -46,7 +46,7 @@ platformCollisions2D.forEach((row, y) => {
     })
 })
 class Projectile {
-    constructor({ position, velocity, camerabox }) {
+    constructor({position, velocity, camerabox}) {
         this.position = position;
         this.velocity = velocity;
         this.radius = 3;
@@ -86,7 +86,6 @@ class Projectile {
 }
 const projectiles = []
 const gravity = 0.1
-
 async function createPlayer(x, y, spriteId) {
     const response = await axios.get(`/sprite/${spriteId}`);
     const data = response.data.data;
@@ -112,17 +111,20 @@ async function createPlayer(x, y, spriteId) {
 
     return player;
 }
-// Usage example
 let player;
-
 async function main() {
-    const player1 = await createPlayer(100, 700, '1');
+    // get the sprite ID for the authenticated user
+    const spriteId = await axios.get('/user/sprite-id').then(response => response.data.sprite_id);
+
+    // call createPlayer with the sprite ID
+    const player1 = await createPlayer(100, 700, spriteId);
     player = player1;
     // rest of your code goes here
 }
-
-
-main().then(() =>{
+async function updateSpriteId(spriteId) {
+    await axios.put('/user/sprite-id', {sprite_id: spriteId});
+}
+main().then(() => {
     function createEnemy(x, y, imageSrc, frameRate) {
         return new Enemy({
             position: {
@@ -135,9 +137,9 @@ main().then(() =>{
             frameRate,
         });
     }
-    const enemy1 = createEnemy(300, 700, '../img/soldier/idle.png', 8,200);
-    const enemy2 = createEnemy(600, 700, '../img/soldier/idle.png', 8,200);
-    const enemies = [ enemy1, enemy2,];
+    const enemy1 = createEnemy(300, 700, '../img/soldier/idle.png', 8, 200);
+    const enemy2 = createEnemy(600, 700, '../img/soldier/idle.png', 8, 200);
+    const enemies = [enemy1, enemy2,];
     const keys = {
         d: {
             pressed: false,
@@ -161,7 +163,6 @@ main().then(() =>{
         },
     }
     let score = 0;
-
     function animate() {
         window.requestAnimationFrame(animate)
         c.fillStyle = 'white'
@@ -218,23 +219,23 @@ main().then(() =>{
             player.switchSprite('Run')
             player.velocity.x = 2
             player.lastDirection = 'right'
-            player.shouldPanCameraToTheLeft({ canvas, camera })
+            player.shouldPanCameraToTheLeft({canvas, camera})
         } else if (keys.a.pressed) {
             player.switchSprite('RunLeft')
             player.velocity.x = -2
             player.lastDirection = 'left'
-            player.shouldPanCameraToTheRight({ canvas, camera })
+            player.shouldPanCameraToTheRight({canvas, camera})
         } else if (player.velocity.y === 0) {
             if (player.lastDirection === 'right') player.switchSprite('Idle')
             else player.switchSprite('IdleLeft')
         }
 
         if (player.velocity.y < 0) {
-            player.shouldPanCameraDown({ camera, canvas })
+            player.shouldPanCameraDown({camera, canvas})
             if (player.lastDirection === 'right') player.switchSprite('Jump')
             else player.switchSprite('JumpLeft')
         } else if (player.velocity.y > 0) {
-            player.shouldPanCameraUp({ camera, canvas })
+            player.shouldPanCameraUp({camera, canvas})
             if (player.lastDirection === 'right') player.switchSprite('Fall')
             else player.switchSprite('FallLeft')
         }
@@ -245,7 +246,6 @@ main().then(() =>{
         c.restore()
     }
     animate()
-
     window.addEventListener('keydown', (event) => {
         switch (event.key) {
             case 'd':
@@ -258,10 +258,10 @@ main().then(() =>{
                 player.velocity.y = -4
                 break
             case ' ':
-                console.log('space')
-                projectiles.push (new Projectile({
-                    position: { x: player.position.x + player.width, y: player.position.y +50 },
-                    velocity: { x:10, y: 0 },
+                /*console.log('space')*/
+                projectiles.push(new Projectile({
+                    position: {x: player.position.x + player.width, y: player.position.y + 50},
+                    velocity: {x: 10, y: 0},
                     camerabox: player.camerabox, // pass the camerabox to the constructor
                 }))
                 break
@@ -277,4 +277,27 @@ main().then(() =>{
                 break
         }
     })
-});
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    window.addEventListener('keydown', function (event) {
+        if (event.key === 'l') {
+            // Send a POST request to the score endpoint with the CSRF token
+            fetch('/score', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                body: JSON.stringify({score: score})
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    // redirect to localhost:3000 after the score is updated
+                    window.location.href = 'http://localhost';
+                })
+                .catch(error => {
+                    // handle error
+                });
+        }
+    });
+})

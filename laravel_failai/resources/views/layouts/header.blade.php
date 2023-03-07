@@ -25,6 +25,9 @@
         <li>
             <a href="{{route('homepage')}}">Homepage</a>
         </li>
+        <li>
+            <a href="{{ route('change.sprite.form') }}">Change Sprite</a>
+        </li>
     </ul>
 </header>
 
