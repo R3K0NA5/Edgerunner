@@ -3,8 +3,8 @@ const c = canvas.getContext('2d')
 canvas.width = 1000
 canvas.height = 1000
 const scaledCanvas = {
-    width: canvas.width / 1,
-    height: canvas.height / 1,
+    width: canvas.width ,
+    height: canvas.height ,
 }
 const floorCollisions2D = []
 for (let i = 0; i < floorCollisions.length; i += 800) {
@@ -93,8 +93,13 @@ const gravity = 0.1
 
 
 
-function createPlayer(x, y, imageSrc, animations) {
-    return new Player({
+async function createPlayer(x, y, spriteId) {
+    const response = await fetch(`/sprite/${spriteId}`);
+    const data = await response.json();
+    const { imageSrc, animations } = data;
+    console.log('data:', data);
+    console.log('animations:', animations);
+    const player = new Player({
         position: {
             x,
             y,
@@ -105,57 +110,21 @@ function createPlayer(x, y, imageSrc, animations) {
         frameRate: 8,
         animations,
     });
-
-
-
+    console.log('player:', player);
+    return player;
 }
-const player1 = createPlayer(
-    100, 700, '../img/soldier/idle.png', {
-    Idle: {
-        imageSrc: '../img/soldier/idle.png',
-        frameRate: 8,
-        frameBuffer: 200,
-    },
-    Run: {
-        imageSrc: '../img/soldier/begimas.png',
-        frameRate: 8,
-        frameBuffer: 12,
-    },
-    Jump: {
-        imageSrc: '../img/soldier/begimas.png',
-        frameRate: 8,
-        frameBuffer: 200,
-    },
-    Fall: {
-        imageSrc: '../img/soldier/falling.png',
-        frameRate: 8,
-        frameBuffer: 200,
-    },
-    FallLeft: {
-        imageSrc: '../img/soldier/fallingk.png',
-        frameRate: 8,
-        frameBuffer: 200,
-    },
-    RunLeft: {
-        imageSrc: '../img/soldier/begimask.png',
-        frameRate: 8,
-        frameBuffer: 12,
-    },
-    IdleLeft: {
-        imageSrc: '../img/soldier/idlek.png',
-        frameRate: 8,
-        frameBuffer: 200,
-    },
-    JumpLeft: {
-        imageSrc: '../img/soldier/jumpk.png',
-        frameRate: 8,
-        frameBuffer: 200,
-    },
-});
 
+// Usage example
+let player;
 
-let player = player1;
+async function main() {
+    const player1 = await createPlayer(100, 700, '1');
+    player = player1;
+    // rest of your code goes here
+}
+debugger;
 
+main();
 
 
 

@@ -8,7 +8,9 @@ class Player extends Sprite {
                     scale = 1.5,
                     animations,
                 }) {
-        super({ imageSrc, frameRate, scale })
+        super({ imageSrc, frameRate, scale });
+        console.log('imageSrc:', imageSrc);
+        console.log('animations:', animations);
         this.position = position
         this.velocity = {
             x: 0,
@@ -27,6 +29,8 @@ class Player extends Sprite {
         }
 
         this.animations = animations
+        debugger;
+        console.log('this.animations:', this.animations)
         this.lastDirection = 'right'
 
         for (let key in this.animations) {
@@ -47,6 +51,7 @@ class Player extends Sprite {
     }
 
     switchSprite(key) {
+        console.log('this.animations:', this.animations);
         if (this.image === this.animations[key].image || !this.loaded) return
 
         this.currentFrame = 0
