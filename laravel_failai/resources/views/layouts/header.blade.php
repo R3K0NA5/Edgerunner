@@ -18,16 +18,10 @@
 <html>
 <body>
 <header>
-    <ul>
-        <li>
-            <a href="{{route('game')}}">Game</a>
-        </li>
-        <li>
-            <a href="{{route('homepage')}}">Homepage</a>
-        </li>
-        <li>
-            <a href="{{ route('change.sprite.form') }}">Change Sprite</a>
-        </li>
-    </ul>
+    {{--<nav class="headerNav">
+        <div><a href="{{route('game')}}"><h3>Game</h3></a></div>
+        <div><a href="{{route('homepage')}}"><h3>Homepage</h3></a></div>
+        <div><a href="{{ route('change.sprite.form') }}"><h3>Change Sprite</h3></a></div>
+    </nav>--}}
 </header>
 

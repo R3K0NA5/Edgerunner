@@ -5,14 +5,96 @@ canvas {
     display: block;
     margin: auto;
 }
-body {
-    width: 100%;
+html, body {
     height: 100%;
-    background-image: url('../img/cyberpunk_1.gif');
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
+    background-image: url('../img/cyberpunk_1.gif');
     background-size: cover;
 }
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0;
+}
+.row1 {
+    height: 100%;
+    padding: 0;
+}
+.row2 {
+    height: 20%;
+    padding: 0;
+}
+.row3 {
+    height: 60%;
+    padding: 0;
+}
+.row4 {
+    height: 20%;
+    padding: 0;
+}
+
+
+.rightMenu {
+    display: flex;
+    width: 600px; /* set the width to 25% of the viewport width */
+    height: 700px ; /* set the height to 25% of the viewport height */
+    background-image: url('../img/homepage/men0Left.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0.8;
+    transition: transform 0.2s ease-out;
+    color: white;
+    overflow: hidden;
+}
+
+.waitingForConnectionText {
+    position: absolute;
+    left: 51%;
+    top: 14%;
+    transform: translate(-50%, -50%);
+    opacity: 60%;
+}
+
+
+.waitingForConnectionvideo {
+    position: absolute;
+    top: 58%;
+    right: 7%;
+    transform: translateY(-50%);
+    transform-style: preserve-3d;
+}
+
+
+.sideMeniuGame{
+    border-left: 1px solid red;
+}
+
+
+
+
+
+
+
+
+
+
+/*.video {
+    display: flex;
+    position: relative;
+    margin-top: 54px;
+    margin-left: 61px;
+    -moz-transform: rotate(6deg) translate(1px, 10px) skew(14deg, -5deg);
+    -webkit-transform: rotate(6deg) translate(1px, 10px) skew(14deg, -5deg);
+    -o-transform: rotate(6deg) translate(1px, 10px) skew(14deg, -5deg);
+    -ms-transform: rotate(6deg) translate(1px, 10px) skew(14deg, -5deg);
+    transform: rotate(6deg) translate(1px, 10px) skew(14deg, -5deg);
+}*/
+
+
 /*.backgroundImg {
     background-size: contain;
     background-repeat: no-repeat;

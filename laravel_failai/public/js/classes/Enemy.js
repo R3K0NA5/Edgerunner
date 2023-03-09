@@ -1,4 +1,3 @@
-
 class Enemy extends Sprite {
     constructor({
                     position,
