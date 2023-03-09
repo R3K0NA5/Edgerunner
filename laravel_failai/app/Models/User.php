@@ -80,4 +80,10 @@ class User extends Authenticatable
     public function isUser():bool{
         return $this->role === self::ROLE_USER;
     }
+    public function showCurrentScore()
+    {
+        $user = User::with('scores')->find(auth()->user()->id);
+        $scores = $user->scores;
+        return view('current_score', compact('scores'));
+    }
 }

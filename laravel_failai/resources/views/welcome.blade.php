@@ -46,54 +46,76 @@
     </div>
 @endguest
 @auth
-@if (auth()?->user()?->isUser())
-    <div class="container-fluid base backgroundImg">
-        <div class="row row1">
-            {{-- Kaire puse--}}
-            <div class="col-md-10">
-                {{--kaires virsus--}}
-                <div class="row row2">
-                    <div class="col-md-12"></div>
-                </div>
-                <div class="row row3">
-                    <div class="col-md-12">
-                        {{--Vidurys--}}
-                        <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-5 ">
-                                <div class="rightMenu">
-                                    <div>
-                                    <h4>User Information</h4>
-                                    <p>Name: {{ auth()->user()->name }}</p>
-                                    <p>Sprite ID: {{ auth()->user()->sprite_id }}</p>
-                                    <p>Role: {{ auth()->user()->role }}</p>
-                                    <p>Joined: {{ auth()->user()->created_at->format('M j, Y') }}</p>
+    @if (auth()?->user()?->isUser())
+        <div class="container-fluid base backgroundImg">
+            <div class="row row1">
+                {{-- Kaire puse--}}
+                <div class="col-md-10">
+                    {{--kaires virsus--}}
+                    <div class="row row2">
+                        <div class="col-md-12"></div>
+                    </div>
+                    <div class="row row3">
+                        <div class="col-md-12">
+                            {{--Vidurys--}}
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-5 ">
+                                    <div class=" row rightMenu">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12 menuOperator">
+                                                    <p>OPERATOR / {{ auth()->user()->name }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 menuContract">
+                                                    <p>CONTRTRACT
+                                                        START/ {{ auth()->user()->created_at->format('M j, Y') }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="menuSprite {{ 'sprite'.auth()->user()->sprite_id }}">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 menuRank">
+                                                    <p>RANK / {{ auth()->user()->role }}</p>
+                                                </div>
+                                                <div class="col-md-6 menuExp">
+                                                    <p>EXP / {{ auth()->user()->scores()->sum('score') }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="col-md-4"></div>
                             </div>
-                            <div class="col-md-4"></div>
                         </div>
                     </div>
+                    {{--Kaires apacia--}}
+                    <div class="row row4">
+                        <div class="col-md-12 "></div>
+                    </div>
                 </div>
-                {{--Kaires apacia--}}
-                <div class="row row4">
-                    <div class="col-md-12 "></div>
-                </div>
-            </div>
-            {{--Desine puse--}}
-            <div class="col-md-2 sideMeniuGame">
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
+                {{--Desine puse--}}
+                <div class="col-md-2 sideMeniuGame">
+                    <div class="gameStartButton"><a href="{{ route('game') }}">Start game</a></div>
+                    <div class="changeSprite"><a href="{{ route('change.sprite') }}">Change Sprite</a></div>
+                    <div class="changeSprite"><a href="{{ route('portfolio') }}">Portfolio</a></div>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
 
-                    <button type="submit" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
-                        {{ __('Log Out') }}
-                    </button>
-                </form>
+                        <button type="submit"
+                                class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
+                            {{ __('Log Out') }}
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
     @endif
-      @endauth
+@endauth
 @auth
     @if (auth()?->user()?->isAdmin())
         <div class="container-fluid base backgroundImg">
@@ -110,13 +132,31 @@
                             <div class="row">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-5 ">
-                                    <div class="rightMenu">
-                                        <div>
-                                            <h4>User Information</h4>
-                                            <p>Name: {{ auth()->user()->name }}</p>
-                                            <p>Sprite ID: {{ auth()->user()->sprite_id }}</p>
-                                            <p>Role: {{ auth()->user()->role }}</p>
-                                            <p>Joined: {{ auth()->user()->created_at->format('M j, Y') }}</p>
+                                    <div class=" row rightMenu">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-12 menuOperator">
+                                                    <p>OPERATOR / {{ auth()->user()->name }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 menuContract">
+                                                    <p>CONTRTRACT
+                                                        START/ {{ auth()->user()->created_at->format('M j, Y') }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="menuSprite {{ 'sprite'.auth()->user()->sprite_id }}">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 menuRank">
+                                                    <p>RANK / {{ auth()->user()->role }}</p>
+                                                </div>
+                                                <div class="col-md-6 menuExp">
+                                                    <p>EXP / {{ auth()->user()->scores()->sum('score') }}</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -131,10 +171,13 @@
                 </div>
                 {{--Desine puse--}}
                 <div class="col-md-2 sideMeniuGame">
+                    <div class="changeSprite"><a href="{{ route('change.sprite') }}">Change Sprite</a></div>
+                    <div class="gameStartButton"><a href="{{ route('game') }}">Start game</a></div>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
 
-                        <button type="submit" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
+                        <button type="submit"
+                                class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
                             {{ __('Log Out') }}
                         </button>
                     </form>
@@ -144,7 +187,6 @@
     @endif
 @endauth
 @include('layouts.footer')
-
 
 
 <script>                                    /*Sistema valdyti v1*/
