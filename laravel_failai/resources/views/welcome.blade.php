@@ -40,7 +40,23 @@
             </div>
             {{--Desine puse--}}
             <div class="col-md-2 sideMeniuGame">
-                <a href="{{ url('/connect') }}">Go to Login Page</a>
+
+                <div>
+                    <div><img src="{{ asset('img/homepage/dm13n-ymyn1.webm')}}" alt="top"></div>
+
+                    <div class="innermenu">
+                        <a href="{{ url('/connect') }}">Go to Login Page</a>
+                    </div>
+                    <div><img src="{{ asset('img/homepage/apacia menu.png')}}" alt="bottom"></div>
+                </div>
+
+
+
+
+
+
+
+
             </div>
         </div>
     </div>
