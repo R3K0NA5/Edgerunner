@@ -4,16 +4,15 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\SpriteController;
 use App\Http\Controllers\UserController;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 
-
-
 Route::middleware('auth')->post('/change-sprite', [ProfileController::class, 'changeSprite'])->name('change.sprite');
-Route::middleware('auth')->get('/change-sprite', [ProfileController::class, 'showChangeSpriteForm'])->name('change.sprite.form');
+Route::middleware('auth')->get('/change-sprite', [ProfileController::class, 'showChangeSpriteForm'])->name(
+    'change.sprite.form'
+);
 Route::middleware('auth')->get('/user/sprite-id', function (Request $request) {
     $user = $request->user();
     if (!$user) {
@@ -28,11 +27,21 @@ Route::middleware('auth')->get('/user/sprite-id', function (Request $request) {
     return response()->json(['sprite_id' => $spriteId]);
 });
 
-Route::get('/', function () {return view('welcome');})->name('homepage');
-Route::get('/portfolio', function () {return view('portfolio');})->name('portfolio');
-Route::get('/connect', function () {return view('welcome_login');});
-Route::get('/game', function () {return view('game');})->name('game');
-Route::get('/dashboard', function () {return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', function () {
+    return view('welcome');
+})->name('homepage');
+Route::get('/portfolio', function () {
+    return view('portfolio');
+})->name('portfolio');
+Route::get('/connect', function () {
+    return view('welcome_login');
+});
+Route::get('/game', function () {
+    return view('game');
+})->name('game');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/sprite/{sprite}', [SpriteController::class, 'index'])->name('score');
 Route::post('/score', [ScoreController::class, 'store'])->name('score.store');
 

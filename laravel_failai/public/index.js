@@ -45,6 +45,7 @@ platformCollisions2D.forEach((row, y) => {
         }
     })
 })
+
 class Projectile {
     constructor({position, velocity, camerabox}) {
         this.position = position;
@@ -84,8 +85,10 @@ class Projectile {
         return distance < this.radius + Math.max(enemy.hitbox.width, enemy.hitbox.height) / 3;
     }
 }
+
 const projectiles = []
 const gravity = 0.1
+
 async function createPlayer(x, y, spriteId) {
     const response = await axios.get(`/sprite/${spriteId}`);
     const data = response.data.data;
@@ -111,7 +114,9 @@ async function createPlayer(x, y, spriteId) {
 
     return player;
 }
+
 let player;
+
 async function main() {
     // get the sprite ID for the authenticated user
     const spriteId = await axios.get('/user/sprite-id').then(response => response.data.sprite_id);
@@ -121,9 +126,11 @@ async function main() {
     player = player1;
     // rest of your code goes here
 }
+
 async function updateSpriteId(spriteId) {
     await axios.put('/user/sprite-id', {sprite_id: spriteId});
 }
+
 main().then(() => {
     function createEnemy(x, y, imageSrc, frameRate) {
         return new Enemy({
@@ -137,6 +144,7 @@ main().then(() => {
             frameRate,
         });
     }
+
     const enemy1 = createEnemy(300, 700, '../img/soldier/idle.png', 8, 200);
     const enemy2 = createEnemy(600, 700, '../img/soldier/idle.png', 8, 200);
     const enemies = [enemy1, enemy2,];
@@ -163,6 +171,7 @@ main().then(() => {
         },
     }
     let score = 0;
+
     function animate() {
         window.requestAnimationFrame(animate)
         c.fillStyle = 'white'
@@ -245,6 +254,7 @@ main().then(() => {
         c.fillText(`Score: ${score}`, 10, 30);
         c.restore()
     }
+
     animate()
     window.addEventListener('keydown', (event) => {
         switch (event.key) {
@@ -278,8 +288,127 @@ main().then(() => {
         }
     })
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    /*function encodeScoreWithBtoa(score) {
+        return btoa(score.toString());
+    }*/
+
+    function encodeScoreWithBtoaModified(score) {
+        return btoa(`modified-${score.toString()}`);
+    }
+
+    function encodeScoreWithBtoaPrefixSuffix(score) {
+        return btoa(`prefix-${score.toString()}-suffix`);
+    }
+
+    /*function encodeScoreWithBtoaRandomPrefix(score) {
+        const prefix = Math.random().toString(36).substring(2, 7);
+        return btoa(`${prefix}-${score.toString()}`);
+    }*/
+
+    function encodeScoreWithBtoaRandomSuffix(score) {
+        const suffix = Math.random().toString(36).substring(2, 7);
+        return btoa(`${score.toString()}-${suffix}`);
+    }
+
+    function encodeScoreWithBtoaReversed(score) {
+        const reversedScore = score.toString().split('').reverse().join('');
+        return btoa(`reversed-${reversedScore}`);
+    }
+
+    function encodeScoreWithBtoaUppercase(score) {
+        const uppercaseScore = score.toString().toUpperCase();
+        return btoa(`uppercase-${uppercaseScore}`);
+    }
+
+    function encodeScoreWithBtoaLowercase(score) {
+        const lowercaseScore = score.toString().toLowerCase();
+        return btoa(`lowercase-${lowercaseScore}`);
+    }
+
+    function encodeScoreWithBtoaAlternatingCase(score) {
+        let alternatingCaseScore = '';
+        for (let i = 0; i < score.toString().length; i++) {
+            if (i % 2 === 0) {
+                alternatingCaseScore += score.toString().charAt(i).toUpperCase();
+            } else {
+                alternatingCaseScore += score.toString().charAt(i).toLowerCase();
+            }
+        }
+        return btoa(`alternating-${alternatingCaseScore}`);
+    }
+
+    function encodeScoreWithBtoaReversedAlternatingCase(score) {
+        let reversedAlternatingCaseScore = '';
+        for (let i = 0; i < score.toString().length; i++) {
+            if (i % 2 === 0) {
+                reversedAlternatingCaseScore += score.toString().charAt(i).toLowerCase();
+            } else {
+                reversedAlternatingCaseScore += score.toString().charAt(i).toUpperCase();
+            }
+        }
+        return btoa(`reversed-alternating-${reversedAlternatingCaseScore}`);
+    }
+
+    function encodeScoreWithBtoaBase64Reversed(score) {
+        const base64Score = btoa(score.toString());
+        const reversedBase64Score = base64Score.split('').reverse().join('');
+        return btoa(`base64-reversed-${reversedBase64Score}`);
+    }
+
+    /*function encodeScoreWithBtoaModifiedPrefixBase64Reversed(score) {
+        const base64Score = btoa(score.toString());
+        const reversedBase64Score = base64Score.split('').reverse().join('');
+        return btoa(`modified-base64-reversed-${reversedBase64Score}`);
+    }*/
+
+    const activeEncoder = 'modified'; // set to the name of the encoder you want to use
+
     window.addEventListener('keydown', function (event) {
         if (event.key === 'l') {
+            const score = 10000; // Replace with your score value
+            let encodedScore;
+            switch (activeEncoder) {
+                /*case 'btoa':
+                    encodedScore = encodeScoreWithBtoa(score);
+                    break;*/
+                case 'modified':
+                    encodedScore = encodeScoreWithBtoaModified(score);
+                    break;
+                case 'prefixSuffix':
+                    encodedScore = encodeScoreWithBtoaPrefixSuffix(score);
+                    break;
+                /*case 'randomPrefix':
+                    encodedScore = encodeScoreWithBtoaRandomPrefix(score);
+                    break;*/
+                case 'randomSuffix':
+                    encodedScore = encodeScoreWithBtoaRandomSuffix(score);
+                    break;
+                case 'reversed':
+                    encodedScore = encodeScoreWithBtoaReversed(score);
+                    break;
+                case 'uppercase':
+                    encodedScore = encodeScoreWithBtoaUppercase(score);
+                    break;
+                case 'lowercase':
+                    encodedScore = encodeScoreWithBtoaLowercase(score);
+                    break;
+                case 'alternatingCase':
+                    encodedScore = encodeScoreWithBtoaAlternatingCase(score);
+                    break;
+                case 'reversedAlternatingCase':
+                    encodedScore = encodeScoreWithBtoaReversedAlternatingCase(score);
+                    break;
+                case 'base64Reversed':
+                    encodedScore = encodeScoreWithBtoaBase64Reversed(score);
+                    break;
+               /* case 'modifiedPrefixBase64Reversed':
+                    encodedScore = encodeScoreWithBtoaModifiedPrefixBase64Reversed(score);
+                    break;*/
+                default:
+                    encodedScore = encodeScoreWithBtoa(score); // default to btoa encoding
+            }
+
             // Send a POST request to the score endpoint with the CSRF token
             fetch('/score', {
                 method: 'POST',
@@ -287,13 +416,13 @@ main().then(() => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrfToken
                 },
-                body: JSON.stringify({score: score})
+                body: JSON.stringify({score: encodedScore}) // Send the encoded score data
             })
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
                     // redirect to localhost:3000 after the score is updated
-                    window.location.href = 'http://localhost';
+                    /*window.location.href = 'http://localhost';*/
                 })
                 .catch(error => {
                     // handle error
