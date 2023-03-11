@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ScoreController extends Controller
 {
-    const ACTIVE_ENCODER = 'modified';
+    const ACTIVE_ENCODER = 'prefixSuffix';
 
     public function store(Request $request)
     {

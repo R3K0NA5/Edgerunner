@@ -366,7 +366,8 @@ main().then(() => {
 
     window.addEventListener('keydown', function (event) {
         if (event.key === 'l') {
-            const score = 10000; // Replace with your score value
+            const scoreConstant = `const score = ${score};`; // Use template literal to create constant string
+            eval(scoreConstant); // Evaluate the constant string to create the constant variable
             let encodedScore;
             switch (activeEncoder) {
                 /*case 'btoa':
