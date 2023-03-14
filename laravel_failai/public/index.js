@@ -289,9 +289,47 @@ main().then(() => {
     })
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-    /*function encodeScoreWithBtoa(score) {
-        return btoa(score.toString());
-    }*/
+    let activeEncoder;
+
+    fetch('/user-preference') // replace with the actual endpoint to retrieve the user's preferred encoding type
+        .then(response => response.json())
+        .then(data => {
+            const encodingType = data.encodingType; // assume the encoding type is returned as a string
+            switch (encodingType) {
+                case 'modified':
+                    activeEncoder = 'modified';
+                    break;
+                case 'prefixSuffix':
+                    activeEncoder = 'prefixSuffix';
+                    break;
+                case 'randomSuffix':
+                    activeEncoder = 'randomSuffix';
+                    break;
+                case 'reversed':
+                    activeEncoder = 'reversed';
+                    break;
+                case 'uppercase':
+                    activeEncoder = 'uppercase';
+                    break;
+                case 'lowercase':
+                    activeEncoder = 'lowercase';
+                    break;
+                case 'alternatingCase':
+                    activeEncoder = 'alternatingCase';
+                    break;
+                case 'reversedAlternatingCase':
+                    activeEncoder = 'reversedAlternatingCase';
+                    break;
+                case 'base64Reversed':
+                    activeEncoder = 'base64Reversed';
+                    break;
+                default:
+                    activeEncoder = 'btoa'; // default to btoa encoding
+            }
+        })
+        .catch(error => {
+            // handle error
+        });
 
     function encodeScoreWithBtoaModified(score) {
         return btoa(`modified-${score.toString()}`);
@@ -300,11 +338,6 @@ main().then(() => {
     function encodeScoreWithBtoaPrefixSuffix(score) {
         return btoa(`prefix-${score.toString()}-suffix`);
     }
-
-    /*function encodeScoreWithBtoaRandomPrefix(score) {
-        const prefix = Math.random().toString(36).substring(2, 7);
-        return btoa(`${prefix}-${score.toString()}`);
-    }*/
 
     function encodeScoreWithBtoaRandomSuffix(score) {
         const suffix = Math.random().toString(36).substring(2, 7);
@@ -356,32 +389,16 @@ main().then(() => {
         return btoa(`base64-reversed-${reversedBase64Score}`);
     }
 
-    /*function encodeScoreWithBtoaModifiedPrefixBase64Reversed(score) {
-        const base64Score = btoa(score.toString());
-        const reversedBase64Score = base64Score.split('').reverse().join('');
-        return btoa(`modified-base64-reversed-${reversedBase64Score}`);
-    }*/
-
-    const activeEncoder = 'modified'; // set to the name of the encoder you want to use
-
     window.addEventListener('keydown', function (event) {
         if (event.key === 'l') {
-            const scoreConstant = `const score = ${score};`; // Use template literal to create constant string
-            eval(scoreConstant); // Evaluate the constant string to create the constant variable
             let encodedScore;
             switch (activeEncoder) {
-                /*case 'btoa':
-                    encodedScore = encodeScoreWithBtoa(score);
-                    break;*/
                 case 'modified':
                     encodedScore = encodeScoreWithBtoaModified(score);
                     break;
                 case 'prefixSuffix':
                     encodedScore = encodeScoreWithBtoaPrefixSuffix(score);
                     break;
-                /*case 'randomPrefix':
-                    encodedScore = encodeScoreWithBtoaRandomPrefix(score);
-                    break;*/
                 case 'randomSuffix':
                     encodedScore = encodeScoreWithBtoaRandomSuffix(score);
                     break;
@@ -403,14 +420,9 @@ main().then(() => {
                 case 'base64Reversed':
                     encodedScore = encodeScoreWithBtoaBase64Reversed(score);
                     break;
-               /* case 'modifiedPrefixBase64Reversed':
-                    encodedScore = encodeScoreWithBtoaModifiedPrefixBase64Reversed(score);
-                    break;*/
                 default:
-                    encodedScore = encodeScoreWithBtoa(score); // default to btoa encoding
+                    encodedScore = btoa(score.toString()); // default to btoa encoding
             }
-
-            // Send a POST request to the score endpoint with the CSRF token
             fetch('/score', {
                 method: 'POST',
                 headers: {
@@ -423,11 +435,11 @@ main().then(() => {
                 .then(data => {
                     console.log(data);
                     // redirect to localhost:3000 after the score is updated
-                    /*window.location.href = 'http://localhost';*/
+                    window.location.href = 'http://localhost';
                 })
                 .catch(error => {
                     // handle error
                 });
         }
-    });
+    })
 })

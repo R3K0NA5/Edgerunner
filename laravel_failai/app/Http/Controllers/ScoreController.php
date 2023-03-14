@@ -8,7 +8,17 @@ use Illuminate\Support\Facades\Auth;
 
 class ScoreController extends Controller
 {
-    const ACTIVE_ENCODER = 'prefixSuffix';
+    const ACTIVE_ENCODERS = [
+        'modified',
+        'prefixSuffix',
+        'randomSuffix',
+        'reversed',
+        'uppercase',
+        'lowercase',
+        'alternatingCase',
+        'reversedAlternatingCase',
+        'base64Reversed'
+    ];
 
     public function store(Request $request)
     {
@@ -16,11 +26,10 @@ class ScoreController extends Controller
             $user = Auth::user();
             $encodedScore = $request->input('score'); // Get the encoded score data from the request
 
+            $activeEncoder = self::ACTIVE_ENCODERS[$user->alg] ?? self::ACTIVE_ENCODERS[0];
+
             // Decode the score using the corresponding decoder function for the active encoder
-            switch (self::ACTIVE_ENCODER) {
-               /* case 'btoa':
-                    $score = base64_decode($encodedScore);
-                    break;*/
+            switch ($activeEncoder) {
                 case 'modified':
                     $score = base64_decode($encodedScore);
                     $score = str_replace('modified-', '', $score);
@@ -29,10 +38,6 @@ class ScoreController extends Controller
                     $score = base64_decode($encodedScore);
                     $score = str_replace(['prefix-', '-suffix'], '', $score);
                     break;
-                /*case 'randomPrefix':
-                    $score = base64_decode($encodedScore);
-                    $score = explode('-', $score)[1];
-                    break;*/
                 case 'randomSuffix':
                     $score = base64_decode($encodedScore);
                     $score = explode('-', $score)[0];
@@ -83,11 +88,6 @@ class ScoreController extends Controller
                     $score = str_replace('base64-reversed-', '', $score);
                     $score = base64_decode(strrev($score));
                     break;
-                /*case 'modifiedPrefixBase64Reversed':
-                    $score = base64_decode($encodedScore);
-                    $score = str_replace('modified-base64-reversed-', '', $score);
-                    $score = strrev(base64_decode($score));
-                    break;*/
                 default:
                     $score = base64_decode($encodedScore);
             }
@@ -95,18 +95,28 @@ class ScoreController extends Controller
             \Log::info('Score value received: '.$score);
             \Log::info('User ID: '.$user->id);
 
-            $user->scores()->updateOrCreate(
+            /*$user->scores()->updateOrCreate(
                 [],
                 ['score' => $user->scores->sum('score') + $score]
-            );
-
-            \Log::info('Score updated for user: '.$user->id);
+            );*/
+            $user->scores()->create([
+                'score' => $score
+            ]);
+            // Increment the user's alg column value by 1, looping back to 0 if it reaches 9
+            $user = Auth::user();
+            $algValue = $user->alg;
+            $algValue++;
+            if ($algValue >= 9) {
+                $algValue = 0;
+            }
+            $user->alg = $algValue;
+            $user->save();
 
             return response()->json([
                 'success' => true,
-                'message' => 'Score added successfully!'
-            ]);
-        } catch (\Exception $e) {
+                'message' => 'Score added successfully!',
+                'algValue' => $algValue // Return the updated alg value in the response for testing purposes
+            ]);} catch (\Exception $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Error adding score: ' . $e->getMessage()

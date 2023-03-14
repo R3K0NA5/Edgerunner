@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
-
+Route::get('/user-preference', [UserController::class, 'getUserPreference']);
 Route::middleware('auth')->post('/change-sprite', [ProfileController::class, 'changeSprite'])->name('change.sprite');
 Route::middleware('auth')->get('/change-sprite', [ProfileController::class, 'showChangeSpriteForm'])->name(
     'change.sprite.form'
@@ -27,9 +27,7 @@ Route::middleware('auth')->get('/user/sprite-id', function (Request $request) {
     return response()->json(['sprite_id' => $spriteId]);
 });
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('homepage');
+Route::get('/', function () {return view('welcome');})->name('homepage');
 Route::get('/portfolio', function () {
     return view('portfolio');
 })->name('portfolio');

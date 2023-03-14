@@ -14,18 +14,30 @@ class AdminUserSeed extends Seeder
      */
     public function run()
     {
-        $user = User::firstOrCreate(
+        $admin = User::firstOrCreate(
             [
                 'email' => 'admin@example.com',
             ],
             [
                 'name' => 'Admin',
                 'password' => bcrypt('admin'),
-            ],
-            [
-            'sprite_id' => '1',
-            ],
+                'sprite_id' => '1',
+                'alg' => '1',
+                'role' => 'admin',
+            ]
         );
 
+        $recon = User::firstOrCreate(
+            [
+                'email' => 'recon@recon.com',
+            ],
+            [
+                'name' => 'Recon',
+                'password' => bcrypt('recon'),
+                'sprite_id' => '1',
+                'alg' => '1',
+                'role' => 'user',
+            ]
+        );
     }
 }
