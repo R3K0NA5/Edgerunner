@@ -28,18 +28,11 @@ Route::middleware('auth')->get('/user/sprite-id', function (Request $request) {
 });
 
 Route::get('/', function () {return view('welcome');})->name('homepage');
-Route::get('/portfolio', function () {
-    return view('portfolio');
-})->name('portfolio');
-Route::get('/connect', function () {
-    return view('welcome_login');
-});
-Route::get('/game', function () {
-    return view('game');
-})->name('game');
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/portfolio', function () {return view('portfolio');})->name('portfolio');
+Route::get('/registernewaccount', function () {return view('register_new_account');});
+Route::get('/connect', function () {return view('welcome_login');});
+Route::get('/game', function () {return view('game');})->name('game');
+Route::get('/dashboard', function () {return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/sprite/{sprite}', [SpriteController::class, 'index'])->name('score');
 Route::post('/score', [ScoreController::class, 'store'])->name('score.store');
 

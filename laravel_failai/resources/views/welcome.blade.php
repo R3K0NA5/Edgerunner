@@ -3,7 +3,7 @@
     <div class="container-fluid base backgroundImg">
         <div class="row row1">
             {{-- Kaire puse--}}
-            <div class="col-md-10">
+            <div class="col-md-8">
                 {{--kaires virsus--}}
                 <div class="row row2">
                     <div class="col-md-12"></div>
@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="waitingForConnectionvideo">
                                         <video loop autoplay muted>
-                                            <source src="{{ asset('img/homepage/g38q0-k9wwp.webm') }}"
+                                            <source src="{{ asset('img/homepage/uxxvi-a1xd1.webm') }}"
                                                     type="video/webm">
                                         </video>
                                     </div>
@@ -39,24 +39,23 @@
                 </div>
             </div>
             {{--Desine puse--}}
-            <div class="col-md-2 sideMeniuGame">
-
+            <div class="col-md-4 sideMeniuGame">
                 <div>
-                    <div><img src="{{ asset('img/homepage/dm13n-ymyn1.webm')}}" alt="top"></div>
+                    <div><img src="{{ asset('img/homepage/sujungtasVirsus.png')}}" height="60px" width="600px"
+                              alt="tosp"></div>
 
                     <div class="innermenu">
-                        <a href="{{ url('/connect') }}">Go to Login Page</a>
+                        <a href="{{ url('/connect') }}">LOGIN</a>
                     </div>
-                    <div><img src="{{ asset('img/homepage/apacia menu.png')}}" alt="bottom"></div>
+                    <div class="innermenu">
+                        <a href="{{ url('/registernewaccount') }}">REGISTER</a>
+                    </div>
+                    <div class="innermenu">
+                        <a href="{{ url('/portfolio') }}">PORTFOLIO</a>
+                    </div>
+
+                    <div><img src="{{ asset('img/homepage/sujungtaapacia.png')}}" alt="bottom"></div>
                 </div>
-
-
-
-
-
-
-
-
             </div>
         </div>
     </div>
@@ -66,7 +65,7 @@
         <div class="container-fluid base backgroundImg">
             <div class="row row1">
                 {{-- Kaire puse--}}
-                <div class="col-md-10">
+                <div class="col-md-8">
                     {{--kaires virsus--}}
                     <div class="row row2">
                         <div class="col-md-12"></div>
@@ -115,18 +114,28 @@
                     </div>
                 </div>
                 {{--Desine puse--}}
-                <div class="col-md-2 sideMeniuGame">
-                    <div class="gameStartButton"><a href="{{ route('game') }}">Start game</a></div>
-                    <div class="changeSprite"><a href="{{ route('change.sprite') }}">Change Sprite</a></div>
-                    <div class="changeSprite"><a href="{{ route('portfolio') }}">Portfolio</a></div>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
+                <div class="col-md-4 sideMeniuGame">
+                    <div>
+                        <div><img src="{{ asset('img/homepage/sujungtasVirsus.png')}}" height="60px" width="600px"
+                                  alt="tosp"></div>
 
-                        <button type="submit"
-                                class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
-                            {{ __('Log Out') }}
-                        </button>
-                    </form>
+                        <div class="innermenu">
+                            <a href="{{ route('game') }}">START MISSION</a>
+                        </div>
+                        <div class="innermenu">
+                            <a href="{{ route('change.sprite') }}">ARMORY</a>
+                        </div>
+                        <div class="innermenu">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit"
+                                        style="background-color: transparent; color: #b7c6cc;  border: none; box-shadow: none; text-decoration: none;">
+                                    LOGOUT
+                                </button>
+                            </form>
+                        </div>
+                        <div><img src="{{ asset('img/homepage/sujungtaapacia.png')}}" alt="bottom"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -137,7 +146,7 @@
         <div class="container-fluid base backgroundImg">
             <div class="row row1">
                 {{-- Kaire puse--}}
-                <div class="col-md-10">
+                <div class="col-md-8">
                     {{--kaires virsus--}}
                     <div class="row row2">
                         <div class="col-md-12"></div>
@@ -186,17 +195,30 @@
                     </div>
                 </div>
                 {{--Desine puse--}}
-                <div class="col-md-2 sideMeniuGame">
-                    <div class="changeSprite"><a href="{{ route('change.sprite') }}">Change Sprite</a></div>
-                    <div class="gameStartButton"><a href="{{ route('game') }}">Start game</a></div>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
+                <div class="col-md-4 sideMeniuGame">
 
-                        <button type="submit"
-                                class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
-                            {{ __('Log Out') }}
-                        </button>
-                    </form>
+
+                    <div>
+                        <div><img src="{{ asset('img/homepage/sujungtasVirsus.png')}}" height="60px" width="600px"
+                                  alt="tosp"></div>
+
+                        <div class="innermenu">
+                            <a href="{{ route('game') }}">START MISSION</a>
+                        </div>
+                        <div class="innermenu">
+                            <a href="{{ route('change.sprite') }}">ARMORY</a>
+                        </div>
+                        <div class="innermenu">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit"
+                                        style="background-color: transparent; color: #b7c6cc;  border: none; box-shadow: none; text-decoration: none;">
+                                    LOGOUT
+                                </button>
+                            </form>
+                        </div>
+                        <div><img src="{{ asset('img/homepage/sujungtaapacia.png')}}" alt="bottom"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -222,6 +244,23 @@
         const rotationX = Math.atan(deltaY / Math.abs(deltaX)) * 20 / Math.PI;
 
         rightMenu.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0) rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
+    });
+
+    const sideMeniuGame = document.querySelector('.sideMeniuGame');
+    const sideMeniuGameX = sideMeniuGame.offsetLeft + sideMeniuGame.offsetWidth / 2;
+    const sideMeniuGameY = sideMeniuGame.offsetTop + sideMeniuGame.offsetHeight / 2;
+
+    document.addEventListener('mousemove', e => {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+
+        const deltaX = -(mouseX - sideMeniuGameX) / 400;
+        const deltaY = -(mouseY - sideMeniuGameY) / 400;
+
+        const rotationY = Math.atan(deltaX / deltaY) * 5 / Math.PI;
+        const rotationX = Math.atan(deltaY / Math.abs(deltaX)) * 5 / Math.PI;
+
+        sideMeniuGame.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0) rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
     });
 </script>
 

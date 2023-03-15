@@ -15,6 +15,11 @@
 </head>
 <html>
 <body>
+<div class="background">
+
+<video autoplay loop muted>
+    <source src="../img/cyberpunk_1_1.webm" type="video/webm">
+</video>
 <header>
     {{--<nav class="headerNav">
         <div><a href="{{route('game')}}"><h3>Game</h3></a></div>
@@ -23,3 +28,4 @@
     </nav>--}}
 </header>
 
+</div>

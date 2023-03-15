@@ -1,12 +1,23 @@
-a {
-    color: white;
+.innermenu a {
+    display: flex;
+    right: -92px;
+    position: relative;
+    top: 8px;
+    color: #b7c6cc;
+    transform: rotate(0.5deg) !important;
+    letter-spacing: 7px;
     text-decoration: none;
 }
-
-a:hover {
+.innermenu button {
+    display: flex;
+    right: -92px;
+    position: relative;
+    top: 5px;
+    color: #b7c6cc;
+    transform: rotate(0.5deg) !important;
+    letter-spacing: 7px;
     text-decoration: none;
 }
-
 canvas {
     border: 1px solid black;
 }
@@ -21,8 +32,16 @@ html, body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    background-image: url('../img/cyberpunk_1.gif');
+    /*background-image: url('../img/cyberpunk_1.gif');*/
     background-size: cover;
+}
+.background video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .container-fluid {
     display: flex;
@@ -64,8 +83,8 @@ html, body {
 
 .waitingForConnectionText {
     position: absolute;
-    left: 51%;
-    top: 14%;
+    left: 43%;
+    top: 6%;
     transform: translate(-50%, -50%);
     opacity: 60%;
 }
@@ -77,14 +96,14 @@ html, body {
     right: 7%;
     transform: translateY(-50%);
     transform-style: preserve-3d;
+    opacity: 60%;
 }
 
 
 .sideMeniuGame{
 
-    /*background-image: url('../img/homepage/soninis.png');
-    background-size: cover;
-    background-repeat: no-repeat;*/
+    display: flex;
+    align-items: center;
 
 }
 
@@ -106,8 +125,8 @@ html, body {
 
 .menuOperator {
     position: absolute;
-    top: 14%;
-    right: -29%;
+    top: 6%;
+    right: -43%;
     transform: translateY(-50%);
     transform-style: preserve-3d;
 }
@@ -120,11 +139,11 @@ html, body {
     width: 50px;
     height: 100px;
     position: absolute;
-    top: 83%;
+    top: 95%;
     right: 52%;
     transform: translateY(-50%);
     transform-style: preserve-3d;
-    scale: 376%;
+    scale: 547%;
 }
 .sprite2 {
     background-image: url('../img/menu images/2.png');
@@ -133,11 +152,11 @@ html, body {
     width: 50px;
     height: 100px;
     position: absolute;
-    top: 83%;
+    top: 95%;
     right: 52%;
     transform: translateY(-50%);
     transform-style: preserve-3d;
-    scale: 376%;
+    scale: 547%;
 }
 .sprite3 {
     background-image: url('../img/menu images/3.png');
@@ -146,11 +165,11 @@ html, body {
     width: 50px;
     height: 100px;
     position: absolute;
-    top: 83%;
+    top: 95%;
     right: 52%;
     transform: translateY(-50%);
     transform-style: preserve-3d;
-    scale: 376%;
+    scale: 547%;
 }
 .sprite4 {
     background-image: url('../img/menu images/4.png');
@@ -159,16 +178,16 @@ html, body {
     width: 50px;
     height: 100px;
     position: absolute;
-    top: 83%;
+    top: 95%;
     right: 52%;
     transform: translateY(-50%);
     transform-style: preserve-3d;
-    scale: 376%;
+    scale: 547%;
 }
 
 .menuRank{
     position: absolute;
-    top: 87%;
+    top: 97%;
     right: 40%;
     transform: translateY(-50%);
     transform-style: preserve-3d;
@@ -176,18 +195,208 @@ html, body {
 
 .menuContract {
     position: absolute;
-    top: 27%;
-    right: -17%;
+    top: 14%;
+    right: -29%;
     transform: translateY(-50%);
     transform-style: preserve-3d;
 }
 .menuExp {
     position: absolute;
-    top: 87%;
-    right: -8%;
+    top: 97%;
+    right: -15%;
     transform: translateY(-50%);
-    transform-style: preserve-3d;
+    transform-style: preserve-3d;;
 }
+.innermenu{
+    width: 505px;
+    height: 48px;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/homepage/menu button inactive.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    right: -48px;
+    position: relative;
+}
+.innermenu:hover {
+    background-image: url('../img/homepage/menu button active.png');
+}
+
+
+.innermenu a:hover{
+    color: #ffffff;
+}
+
+
+.loginas label{
+    display: flex;
+    margin-bottom: .5rem;
+    right: -141px;
+    position: relative;
+    top: 227px;
+}
+.loginas input {
+    overflow: visible;
+    position: relative;
+    top: 184px;
+    left: 282px;
+}
+.prisiminimas {
+    display: flex;
+    margin-bottom: .5rem;
+    right: -148px;
+    position: relative;
+    top: 467px;
+}
+.prisiminimas {
+    display: flex;
+    margin-bottom: .5rem;
+    right: -148px;
+    position: relative;
+    top: 443px;
+}
+input[type="checkbox"]{
+    right: -229px;
+    position: relative;
+    top: -2px;
+}
+.loginMygtukas {
+    display: flex;
+    margin-bottom: .5rem;
+    right: -202px;
+    position: relative;
+    top: 280px;
+
+
+}
+.loginMygtukas button[type="submit"] {
+    background-color: #223038;
+    width: 200px;
+    height: 50px;
+    border: none;
+    clip-path: polygon(0 0, 80% 0, 100% 50%, 100% 100%, 20% 100%, 0% 50%);
+    color: #c8c7d5;
+
+}
+.loginMygtukas button[type="submit"]:hover  {
+    background-color: #c8c7d5;
+    color: #223038;
+}
+.RegisterMygtukas {
+    display: flex;
+    margin-bottom: .5rem;
+    right: -202px;
+    position: relative;
+    top: 280px;
+
+
+}
+.RegisterMygtukas button[type="submit"] {
+    background-color: #223038;
+    width: 200px;
+    height: 50px;
+    border: none;
+    clip-path: polygon(0 0, 80% 0, 100% 50%, 100% 100%, 20% 100%, 0% 50%);
+    color: #c8c7d5;
+
+}
+.RegisterMygtukas button[type="submit"]:hover  {
+    background-color: #c8c7d5;
+    color: #223038;
+}
+
+.registracijos label{
+    display: flex;
+    margin-bottom: .5rem;
+    right: -141px;
+    position: relative;
+    top: 227px;
+}
+.registracijos input {
+    overflow: visible;
+    position: relative;
+    top: 184px;
+    left: 282px;
+}
+
+
+
+
+
+
+
+
+
+.PirkimoMygtukas {
+    display: flex;
+    margin-bottom: .5rem;
+
+    position: relative;
+
+
+
+}
+.PirkimoMygtukas button[type="submit"] {
+    background-color: #223038;
+    width: 200px;
+    height: 50px;
+    border: none;
+    clip-path: polygon(0 0, 80% 0, 100% 50%, 100% 100%, 20% 100%, 0% 50%);
+    color: #c8c7d5;
+
+}
+.PirkimoMygtukas button[type="submit"]:hover  {
+    background-color: #c8c7d5;
+    color: #223038;
+}
+
+
+.carousel {
+    max-width: 915px; /* Set maximum width */
+    margin: auto; /* Center horizontally */
+    margin-top: 207px; /* Set top margin to center vertically */
+    background-size: 300px;
+}
+
+.carousel-item img {
+    max-height: 300px;
+    left: -189px;
+    position: relative;
+}
+
+.carousel-item .text-center {
+    height: 400px; /* Set height for sprite description and upgrade button */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.karioNuotrauka img{
+    position: relative;
+    left: -30px;
+}
+.buybackground{
+    position: relative;
+
+    width: 300px;
+    height: 400px;
+
+}
+#sprite-carousel {
+    background-image: url('../img/homepage/buymenubackground.png');
+    background-size: contain;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    display: flex;
+}
+
+
+
+
+
+
 
 
 
