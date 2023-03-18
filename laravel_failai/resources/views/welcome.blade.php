@@ -196,8 +196,6 @@
                 </div>
                 {{--Desine puse--}}
                 <div class="col-md-4 sideMeniuGame">
-
-
                     <div>
                         <div><img src="{{ asset('img/homepage/sujungtasVirsus.png')}}" height="60px" width="600px"
                                   alt="tosp"></div>
@@ -224,79 +222,6 @@
         </div>
     @endif
 @endauth
+<script src="{{ asset('js/webpage/rightMenu.js')}}"></script>
+<script src="{{ asset('js/webpage/sidemenu.js')}}"></script>
 @include('layouts.footer')
-
-
-<script>                                    /*Sistema valdyti v1*/
-
-    const rightMenu = document.querySelector('.rightMenu');
-    const rightMenuX = rightMenu.offsetLeft + rightMenu.offsetWidth / 2;
-    const rightMenuY = rightMenu.offsetTop + rightMenu.offsetHeight / 2;
-
-    document.addEventListener('mousemove', e => {
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-
-        const deltaX = -(mouseX - rightMenuX) / 90;
-        const deltaY = -(mouseY - rightMenuY) / 90;
-
-        const rotationY = Math.atan(deltaX / deltaY) * 20 / Math.PI;
-        const rotationX = Math.atan(deltaY / Math.abs(deltaX)) * 20 / Math.PI;
-
-        rightMenu.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0) rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
-    });
-
-    const sideMeniuGame = document.querySelector('.sideMeniuGame');
-    const sideMeniuGameX = sideMeniuGame.offsetLeft + sideMeniuGame.offsetWidth / 2;
-    const sideMeniuGameY = sideMeniuGame.offsetTop + sideMeniuGame.offsetHeight / 2;
-
-    document.addEventListener('mousemove', e => {
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-
-        const deltaX = -(mouseX - sideMeniuGameX) / 400;
-        const deltaY = -(mouseY - sideMeniuGameY) / 400;
-
-        const rotationY = Math.atan(deltaX / deltaY) * 5 / Math.PI;
-        const rotationX = Math.atan(deltaY / Math.abs(deltaX)) * 5 / Math.PI;
-
-        sideMeniuGame.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0) rotateY(${rotationY}deg) rotateX(${rotationX}deg)`;
-    });
-</script>
-
-
-{{--                                        Sistema kontroliuoti used admin and guest                      --}}
-{{--@guest--}}
-{{--    <a href="https://www.youtube.com/watch?v=dQw4w9"><h3>login</h3></a>--}}
-{{--@else--}}
-{{--    @auth--}}
-{{--        @if (auth()?->user()?->isUser())--}}
-{{--            <a href="https://www.youtube.com/watch?v=dQw4w9"><h3>User</h3></a>--}}
-{{--            <a href="https://www.youtube.com/watch?v=dQw4w9"><h3>Logout</h3></a>--}}
-{{--        @endif--}}
-{{--    @endauth--}}
-{{--    @auth--}}
-{{--        @if (auth()?->user()?->isAdmin())--}}
-{{--            <a href="https://www.youtube.com/watch?v=dQw4w9"><h3>admin</h3></a>--}}
-{{--            <a href="https://www.youtube.com/watch?v=dQw4w9"><h3>Logout</h3></a>--}}
-{{--        @endif--}}
-{{--    @endauth--}}
-{{--@endguest--}}
-{{----}}
-
-
-{{--<div>
-    @if (Route::has('login'))
-            @auth
-                <a href="{{ url('/dashboard') }}">Dashboard</a>
-            @else
-                <a href="{{ route('login') }}">Login</a>
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}">Register</a>
-                @endif
-            @endauth
-        </div>
-    @endif--}}
-{{--<video width="300" height="300" loop autoplay muted>
-    <source src="{{ asset('img/vmi9h-l9ojp.webm') }}" type="video/webm">
-</video>--}}

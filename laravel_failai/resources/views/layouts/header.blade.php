@@ -15,17 +15,11 @@
 </head>
 <html>
 <body>
+{{--Fono uzpildymas--}}
 <div class="background">
-
 <video autoplay loop muted>
     <source src="../img/cyberpunk_1_1.webm" type="video/webm">
 </video>
 <header>
-    {{--<nav class="headerNav">
-        <div><a href="{{route('game')}}"><h3>Game</h3></a></div>
-        <div><a href="{{route('homepage')}}"><h3>Homepage</h3></a></div>
-        <div><a href="{{ route('change.sprite.form') }}"><h3>Change Sprite</h3></a></div>
-    </nav>--}}
 </header>
-
 </div>

@@ -145,9 +145,25 @@ main().then(() => {
         });
     }
 
-    const enemy1 = createEnemy(300, 700, '../img/soldier/idle.png', 8, 200);
-    const enemy2 = createEnemy(600, 700, '../img/soldier/idle.png', 8, 200);
-    const enemies = [enemy1, enemy2,];
+    const enemy1 = createEnemy(300, 700, '../img/soldier/idlek.png', 8, 200);
+    const enemy2 = createEnemy(600, 700, '../img/soldier/idlek.png', 8, 200);
+    const enemy3 = createEnemy(900, 700, '../img/soldier/idlek.png', 8, 200);
+    const enemy4 = createEnemy(1200, 700, '../img/soldier/idlek.png', 8, 200);
+    const enemy5 = createEnemy(1500, 700, '../img/soldier/idlek.png', 8, 200);
+    const enemy6 = createEnemy(1800, 700, '../img/soldier/idlek.png', 8, 200);
+    const enemy7 = createEnemy(2100, 700, '../img/soldier/idlek.png', 8, 200);
+    const enemy8 = createEnemy(2300, 700, '../img/soldier/idlek.png', 8, 200);
+    const enemy9 = createEnemy(2600, 700, '../img/soldier/idlek.png', 8, 200);
+    const enemy10 = createEnemy(2900, 700, '../img/soldier/idlek.png', 8, 200);
+    const enemy11 = createEnemy(3200, 700, '../img/soldier/idlek.png', 8, 200);
+    const enemy12 = createEnemy(3500, 700, '../img/soldier/idlek.png', 8, 200);
+    const enemy13 = createEnemy(3800, 700, '../img/soldier/idlek.png', 8, 200);
+    const enemy14 = createEnemy(4100, 700, '../img/soldier/idlek.png', 8, 200);
+    const enemy15 = createEnemy(4500, 700, '../img/soldier/idlek.png', 8, 200);
+    const enemy16 = createEnemy(4600, 700, '../img/soldier/idlek.png', 8, 200);
+    const enemy17 = createEnemy(5000, 700, '../img/soldier/idlek.png', 8, 200);
+
+    const enemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8, enemy9, enemy10, enemy11, enemy12, enemy13, enemy14, enemy15, enemy16, enemy17];
     const keys = {
         d: {
             pressed: false,
@@ -173,20 +189,20 @@ main().then(() => {
     let score = 0;
 
     function animate() {
-        window.requestAnimationFrame(animate)
-        c.fillStyle = 'white'
-        c.fillRect(0, 0, canvas.width, canvas.height)
+        window.requestAnimationFrame(animate);
+        c.fillStyle = "white";
+        c.fillRect(0, 0, canvas.width, canvas.height);
 
-        c.save()
-        c.scale(1, 1)
-        c.translate(camera.position.x, camera.position.y)
-        background.update()
+        c.save();
+        c.scale(1, 1);
+        c.translate(camera.position.x, camera.position.y);
+        background.update();
         collisionBlocks.forEach((collisionBlock) => {
-            collisionBlock.update()
-        })
+            collisionBlock.update();
+        });
         platformCollisionBlocks.forEach((block) => {
-            block.update()
-        })
+            block.update();
+        });
         // Check for collisions between projectiles and enemies
         for (let i = 0; i < projectiles.length; i++) {
             for (let j = 0; j < enemies.length; j++) {
@@ -204,79 +220,91 @@ main().then(() => {
         }
         // Update the remaining enemies
         enemies.forEach((enemy) => {
-            enemy.checkForHorizontalCanvasCollision()
-            enemy.update()
+            enemy.checkForHorizontalCanvasCollision();
+            enemy.update();
             // Draw the hitbox for the enemy
-            c.fillStyle = 'rgba(85,255,0,0)'
+            c.fillStyle = "rgba(85,255,0,0)";
             c.fillRect(
                 enemy.hitbox.position.x,
                 enemy.hitbox.position.y,
                 enemy.hitbox.width,
                 enemy.hitbox.height
-            )
-        })
+            );
+        });
         // Update the player and projectiles
-        player.checkForHorizontalCanvasCollision()
-        player.update()
+        player.checkForHorizontalCanvasCollision();
+        player.update();
 
         projectiles.forEach((projectile) => {
             projectile.update();
         });
 
-        player.velocity.x = 0
+        player.velocity.x = 0;
         if (keys.d.pressed) {
-            player.switchSprite('Run')
-            player.velocity.x = 2
-            player.lastDirection = 'right'
-            player.shouldPanCameraToTheLeft({canvas, camera})
+            player.switchSprite("Run");
+            player.velocity.x = 2;
+            player.lastDirection = "right";
+            player.shouldPanCameraToTheLeft({ canvas, camera });
         } else if (keys.a.pressed) {
-            player.switchSprite('RunLeft')
-            player.velocity.x = -2
-            player.lastDirection = 'left'
-            player.shouldPanCameraToTheRight({canvas, camera})
+            player.switchSprite("RunLeft");
+            player.velocity.x = -2;
+            player.lastDirection = "left";
+            player.shouldPanCameraToTheRight({ canvas, camera });
         } else if (player.velocity.y === 0) {
-            if (player.lastDirection === 'right') player.switchSprite('Idle')
-            else player.switchSprite('IdleLeft')
+            if (player.lastDirection === "right") player.switchSprite("Idle");
+            else player.switchSprite("IdleLeft");
         }
 
         if (player.velocity.y < 0) {
-            player.shouldPanCameraDown({camera, canvas})
-            if (player.lastDirection === 'right') player.switchSprite('Jump')
-            else player.switchSprite('JumpLeft')
+            player.shouldPanCameraDown({ camera, canvas });
+            if (player.lastDirection === "right") player.switchSprite("Jump");
+            else player.switchSprite("JumpLeft");
         } else if (player.velocity.y > 0) {
-            player.shouldPanCameraUp({camera, canvas})
-            if (player.lastDirection === 'right') player.switchSprite('Fall')
-            else player.switchSprite('FallLeft')
+            player.shouldPanCameraUp({ camera, canvas });
+            if (player.lastDirection === "right") player.switchSprite("Fall");
+            else player.switchSprite("FallLeft");
         }
 
-        c.fillStyle = 'white';
-        c.font = '20px Arial';
-        c.fillText(`Score: ${score}`, 10, 30);
-        c.restore()
+        c.fillStyle = "white";
+        c.font = '1.3rem "JLS Data GothicC  NC", monospace';
+        c.textAlign = "center";
+        /*c.fillText(`Score: ${score}`, canvas.width / 2, 30);*/
+
+        // Update the score on the HTML side
+        let scoreElement = document.getElementById("score");
+        scoreElement.textContent = "SCORE: " + score;
+
+        c.restore();
     }
 
     animate()
+    let lastWPressTime = 0;
+
     window.addEventListener('keydown', (event) => {
         switch (event.key) {
             case 'd':
-                keys.d.pressed = true
-                break
+                keys.d.pressed = true;
+                break;
             case 'a':
-                keys.a.pressed = true
-                break
+                keys.a.pressed = true;
+                break;
             case 'w':
-                player.velocity.y = -4
-                break
+                let currentTime = Date.now();
+                if (currentTime - lastWPressTime > 800) {
+                    player.velocity.y = -5;
+                    lastWPressTime = currentTime;
+                }
+                break;
             case ' ':
                 /*console.log('space')*/
                 projectiles.push(new Projectile({
                     position: {x: player.position.x + player.width, y: player.position.y + 50},
                     velocity: {x: 10, y: 0},
                     camerabox: player.camerabox, // pass the camerabox to the constructor
-                }))
-                break
+                }));
+                break;
         }
-    })
+    });
     window.addEventListener('keyup', (event) => {
         switch (event.key) {
             case 'd':
