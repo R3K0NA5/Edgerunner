@@ -123,4 +123,5 @@ class ScoreController extends Controller
             ]);
         }
     }
+
 }

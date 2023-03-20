@@ -55,4 +55,14 @@ class UserController extends Controller
 
         return response()->json(['encodingType' => $encodingType]);
     }
+    public function statistics()
+    {
+        return view('statistics', ['users' => User::with('scores')->get()]);
+    }
+    public function scoreDetails(User $user)
+    {
+        $scores = $user->scores;
+        return view('score_details', compact('scores'));
+    }
+
 }

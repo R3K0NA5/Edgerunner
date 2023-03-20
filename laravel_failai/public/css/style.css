@@ -524,46 +524,26 @@ html, body, .game {
     top: 61px;
 }
 
-
-
-
-
-
-/*.video {
-    display: flex;
-    position: relative;
-    margin-top: 54px;
-    margin-left: 61px;
-    -moz-transform: rotate(6deg) translate(1px, 10px) skew(14deg, -5deg);
-    -webkit-transform: rotate(6deg) translate(1px, 10px) skew(14deg, -5deg);
-    -o-transform: rotate(6deg) translate(1px, 10px) skew(14deg, -5deg);
-    -ms-transform: rotate(6deg) translate(1px, 10px) skew(14deg, -5deg);
-    transform: rotate(6deg) translate(1px, 10px) skew(14deg, -5deg);
-}*/
-
-
-/*.backgroundImg {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    min-height: 95vh;
-}*/
-/*.base{
-    width: 100%;
-    height: 100%;
-}*/
-
-/*
-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 10%;
-    background-color: #000000;
-    color: #acc8e1;
-    text-align: center;
+.rightMenuPortforlio table{
+    margin-left: 180px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
-*/
 
+.rightMenuPortforlio th{
+    margin-left: 10px;
+}
+
+
+.rightMenuPortforlio table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.rightMenuPortforlio th, td {
+    text-align: left;
+    padding: 8px;
+}
+.rightMenuPortforlio td {
+    padding-right: 20px;
+}

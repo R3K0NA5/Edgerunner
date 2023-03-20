@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\SpriteController;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/statistics', [UserController::class, 'statistics'])->name('statistics');
+    Route::get('/score/{user}', [UserController::class, 'scoreDetails'])->name('score.details');
     Route::get('/game', function () {
         return view('game');
     })->name('game');

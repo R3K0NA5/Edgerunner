@@ -199,7 +199,9 @@
                     <div>
                         <div><img src="{{ asset('img/homepage/sujungtasVirsus.png')}}" height="60px" width="600px"
                                   alt="tosp"></div>
-
+                        <div class="innermenu">
+                            <a href="{{ route('statistics') }}">STATISTICS</a>
+                        </div>
                         <div class="innermenu">
                             <a href="{{ route('game') }}">START MISSION</a>
                         </div>
