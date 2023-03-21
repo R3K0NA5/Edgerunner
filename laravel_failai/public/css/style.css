@@ -520,9 +520,10 @@ html, body, .game {
 #score {
     color: white;
     position: relative;
-    right: -455px;
+    right: -44px;
     top: 61px;
 }
+
 
 .rightMenuPortforlio table{
     margin-left: 180px;
@@ -546,4 +547,7 @@ html, body, .game {
 }
 .rightMenuPortforlio td {
     padding-right: 20px;
+}
+.tekkstoSpalvos{
+    color: #c8c7d5;
 }

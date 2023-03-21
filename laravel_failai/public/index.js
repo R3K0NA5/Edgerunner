@@ -45,21 +45,19 @@ platformCollisions2D.forEach((row, y) => {
         }
     })
 })
-
+const projectileSprite = new Image();
+projectileSprite.src = '../img/soldier/bullet.png';
 class Projectile {
-    constructor({position, velocity, camerabox}) {
+    constructor({ position, velocity, camerabox }) {
         this.position = position;
         this.velocity = velocity;
-        this.radius = 3;
+        this.width = 5; // Set the width of the projectile sprite
+        this.height = 10; // Set the height of the projectile sprite
         this.camerabox = camerabox;
     }
 
     draw() {
-        c.beginPath();
-        c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
-        c.fillStyle = 'white';
-        c.fill();
-        c.closePath();
+        c.drawImage(projectileSprite, this.position.x, this.position.y, this.width, this.height);
     }
 
     update() {
@@ -73,7 +71,6 @@ class Projectile {
             this.position.y < this.camerabox.position.y ||
             this.position.y > this.camerabox.position.y + this.camerabox.height
         ) {
-            // Remove the projectile from the projectiles array if it's outside of the camerabox
             projectiles.splice(projectiles.indexOf(this), 1);
         }
     }
@@ -82,7 +79,7 @@ class Projectile {
         const dx = this.position.x - (enemy.hitbox.position.x + enemy.hitbox.width / 2);
         const dy = this.position.y - (enemy.hitbox.position.y + enemy.hitbox.height / 2);
         const distance = Math.sqrt(dx * dx + dy * dy);
-        return distance < this.radius + Math.max(enemy.hitbox.width, enemy.hitbox.height) / 3;
+        return distance < Math.max(this.width, this.height) / 2 + Math.max(enemy.hitbox.width, enemy.hitbox.height) / 3;
     }
 }
 
@@ -93,7 +90,6 @@ async function createPlayer(x, y, spriteId) {
     const response = await axios.get(`/sprite/${spriteId}`);
     const data = response.data.data;
 
-    // Parse the sprite data into a JavaScript object
     const spriteData = {
         id: data.id,
         imageSrc: data.imageSrc,
@@ -118,13 +114,13 @@ async function createPlayer(x, y, spriteId) {
 let player;
 
 async function main() {
-    // get the sprite ID for the authenticated user
+
     const spriteId = await axios.get('/user/sprite-id').then(response => response.data.sprite_id);
 
     // call createPlayer with the sprite ID
     const player1 = await createPlayer(100, 700, spriteId);
     player = player1;
-    // rest of your code goes here
+
 }
 
 async function updateSpriteId(spriteId) {
@@ -218,7 +214,7 @@ main().then(() => {
                 }
             }
         }
-        // Update the remaining enemies
+
         enemies.forEach((enemy) => {
             enemy.checkForHorizontalCanvasCollision();
             enemy.update();
@@ -231,7 +227,7 @@ main().then(() => {
                 enemy.hitbox.height
             );
         });
-        // Update the player and projectiles
+
         player.checkForHorizontalCanvasCollision();
         player.update();
 
@@ -268,9 +264,8 @@ main().then(() => {
         c.fillStyle = "white";
         c.font = '1.3rem "JLS Data GothicC  NC", monospace';
         c.textAlign = "center";
-        /*c.fillText(`Score: ${score}`, canvas.width / 2, 30);*/
 
-        // Update the score on the HTML side
+
         let scoreElement = document.getElementById("score");
         scoreElement.textContent = "SCORE: " + score;
 
@@ -295,16 +290,51 @@ main().then(() => {
                     lastWPressTime = currentTime;
                 }
                 break;
-            case ' ':
-                /*console.log('space')*/
-                projectiles.push(new Projectile({
-                    position: {x: player.position.x + player.width, y: player.position.y + 50},
-                    velocity: {x: 10, y: 0},
-                    camerabox: player.camerabox, // pass the camerabox to the constructor
-                }));
-                break;
+
         }
     });
+
+    canvas.addEventListener('mousedown', (event) => {
+        if (event.button === 0) { // Check if the left mouse button (Mouse 1) is clicked
+            // Calculate the direction vector
+            let adjustedMouseX = mousePosition.x - camera.position.x;
+            let adjustedMouseY = mousePosition.y - camera.position.y;
+            let dx = adjustedMouseX - (player.position.x + player.width);
+            let dy = adjustedMouseY - (player.position.y + 50);
+
+            // Normalize the direction vector
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            let normalizedX = dx / distance;
+            let normalizedY = dy / distance;
+
+            // Set the projectile velocity
+            let projectileSpeed = 25;
+            let velocityX = normalizedX * projectileSpeed;
+            let velocityY = normalizedY * projectileSpeed;
+
+            // Create a new projectile with the calculated velocity
+            projectiles.push(new Projectile({
+                position: { x: player.position.x + player.width, y: player.position.y + 50 },
+                velocity: { x: velocityX, y: velocityY },
+                camerabox: player.camerabox,
+            }));
+        }
+    });
+
+    let mousePosition = { x: 0, y: 0 };
+
+    canvas.addEventListener('mousemove', (event) => {
+        const rect = canvas.getBoundingClientRect();
+        mousePosition.x = event.clientX - rect.left;
+        mousePosition.y = event.clientY - rect.top;
+    });
+
+
+
+
+
+
+
     window.addEventListener('keyup', (event) => {
         switch (event.key) {
             case 'd':
