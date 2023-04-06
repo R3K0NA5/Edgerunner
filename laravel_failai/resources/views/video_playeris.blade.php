@@ -14,33 +14,31 @@
 <style>
 
 
-    /* elementai kuriuos istrinti ikeliant faila*/
-    .headeris{
+    .headeris {
         height: 10%;
         width: 100%;
-        background-color:#005d7c ;
+        background-color: #005d7c;
         margin: 0;
         padding: 0;
         overflow: hidden;
     }
-    .footeris{
-        height: 10%;
-        width: 100%;
-        background-color:#005d7c ;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-    }
-    /* elementai kuriuos istrinti ikeliant faila*/
 
+    .footeris {
+        height: 10%;
+        width: 100%;
+        background-color: #005d7c;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    /* elementai kuriuos istrinti ikeliant faila*/
 
 
     /* Judancio meniu stilistika START */
     .scroll-arrow {
-        width: 10%;
         display: inline-block;
         position: relative;
-        vertical-align: middle;
         cursor: pointer;
         padding: 0;
         margin: 0;
@@ -49,17 +47,24 @@
         transition: 0.2s;
     }
 
+    /*sonininiu rodykliu ryskumas,lygiavimas uzvedus*/
+    .arrow1 {
+        margin-right: 6px;
+    }
+
+    .arrow2 {
+        padding-left: 1vw;
+    }
+
+
     .scroll-arrow:hover {
         transition: 0.2s;
         opacity: 1;
     }
 
-    .scrool_menu{
-        border: 2px solid black;
-    }
-
+    /*sliderio elementu isdeliojimas*/
     .scrool_menu ul {
-        width: 70%;
+        width: 79%;
         scroll-behavior: smooth;
         display: inline-block;
         position: relative;
@@ -83,41 +88,40 @@
         display: inline-block;
         position: relative;
         vertical-align: middle;
-        width: 20%;
+        width: 15%;
         margin: 0 2.5%;
-        filter: grayscale(100%);
         transition: 0.2s;
     }
 
     .scrool_menu li img {
-        width: 200px;
+        width: 10vw;
         pointer-events: none; /* panaikinamas  selectinimas ir draginimas elementu kaip swipini */
     }
-    .scrool_menu button {
-        overflow: visible;
-        display: flex;
-        position: relative;
-        right: -82px;
-        top: 163px;
-    }
+
     /* Judancio meniu stilistika END */
     /* Muzikos teksto nustatymai START */
     .song_info_box {
-        border: 2px solid blue;
+        border: 2px solid rgba(0, 0, 255, 0);
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 1vw;
     }
 
     #song-info {
-        border: 2px solid black;
+        border: 5px solid #005d7c;
         height: 72%;
         position: relative;
-        width: 69%;
-        overflow-y: auto;
+        width: 84%;
+        overflow-y: hidden;
         overflow-x: hidden;
         margin: 0;
         padding: 0;
+        border-radius: 25px 50px 25px 50px;
+        scrollbar-width: thin;
+        scrollbar-color: #005d7c #ddd;
+        max-height: 30vw;
+        min-height: 30vw;
     }
 
     #song-info > * {
@@ -125,24 +129,32 @@
         padding: 0;
     }
 
-    #song-info div {
-        font-size: clamp(0.8rem, 1.2vw, 1.2rem);
-        max-width: 100%;
-        max-height: 100%;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        word-wrap: break-word;
-    }
-
     #song-info p {
         margin: 0;
-        padding: 0;
-        font-size: clamp(0.8rem, 1.2vw, 1.2rem);
+        font-size: clamp(0.65rem, 1.2vw, 1.2rem);
         max-width: 100%;
         max-height: 100%;
         text-overflow: ellipsis;
         white-space: nowrap;
+        overflow-y: auto;
+        color: #003955;
+        padding: 2vw 5vw;
     }
+
+    .song-details a {
+        color: #007bff;
+        text-decoration: none;
+        background-color: transparent;
+        height: 100%;
+        width: 100%;
+        border: 1px solid rgba(255, 0, 0, 0);
+        display: flex;
+        align-content: center;
+        align-items: center;
+        top: 1vw;
+        position: relative;
+    }
+
     .song-text {
         display: none;
     }
@@ -152,99 +164,476 @@
         overflow: hidden;
     }
 
-.video_player_box{
-    border: 2px solid red;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    #song-info::-webkit-scrollbar-thumb:hover {
+        background-color: #003955;
+    }
+
+    /* Muzikos teksto nustatymai END */
+    /* Muzikos playerio nustatymai START */
+    .video_player_box {
+        border: 2px solid rgba(255, 0, 0, 0);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     #video-player {
-        border: 2px solid black;
         width: 100%;
         max-width: 80vh;
         height: 0;
         padding-bottom: 56.25%; /* The aspect ratio of a standard video player (9/16) multiplied by 100 */
         position: relative;
-        background-color: #005d7c;
+        background-color: rgb(0, 93, 124);
+        border: 1px solid #005d7c;
+        border-radius: 25px 50px 25px 50px;
     }
+
+    .video_pirmas_logotipas img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 4px solid #005d7c;
+        border-radius: 25px 50px 25px 50px;
+        object-fit: none;
+
+    }
+
+    .video_pirmas_logotipas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 4px solid #005d7c;
+        border-radius: 25px 50px 25px 50px;
+
+    }
+
     #video-player iframe {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        border: none;
+        border: 4px solid #005d7c;
+        border-radius: 25px 50px 25px 50px;
     }
-    /* Muzikos teksto nustatymai END */
+
+    /* Muzikos playerio nustatymai END */
 </style>
 
 
 <body>
 <div class="row headeris"></div>
 <div class="container-fluid">
-    <div class="row scrool_menu">
-        <div class="col-md-12">
-            <div class="scroll-arrow" id="scroll-left">
-                &#8592;
-            </div>
+    <div class="row scrool_menu">  {{--karusele--}}
+        <div class="col-md-12" style="padding-left: 3vw; margin-bottom: 1vw;"> {{-- karuseles lygiavimas--}}
+            <div class="scroll-arrow arrow1" id="scroll-left" onclick="scrollLeft()">
+                <img draggable="false" src="../img/kaire.png" onerror="this.onerror=null; this.src='../img/kaire.svg'" style="width: 7vw;"/> {{--karuseles rodykle--}}
+            </div>{{--karuseles saraso pradzia--}}
             <ul id="imgList">
-                <li data-song="mano stereo">
-                    <button class="play-video" data-video="https://www.youtube.com/embed/MiSqj3bIe-0">Play Video
-                    </button>
-                    <a href="#"> <img src="../img/palinkek man gero.png"/> </a>
-                </li>
-                <li data-song="mano stereo">
-                    <button class="play-video" data-video="https://www.youtube.com/embed/MiSqj3bIe-0">Play Video
-                    </button>
-                    <img src="../img/juoda orchideja.png"/>
+                <li>
+                    <div class="song-details">{{--karuseles elemento informacija--}}
+                        <p class="song-text">Nežinau galbūt aš keistas<br>
+                            O gal šiaip tokia diena<br>
+                            Nusibodo viskas man<br>
+                            Visko man jau gana<br>
+                            Taip sunku<br>
+                            Neramu<br><br>
+                            Man atrodė, kad aš myliu<br>
+                            Kad tik meilėje jėga<br>
+                            O dabar širdy taip tuščia<br>
+                            Ir artėja pabaiga<br>
+                            Aš tariu:<br>
+                            Lik sveika<br><br>
+                            Tavo žodžiai tartum bangos be krantų<br>
+                            Nežinau, kodėl tavęs nesuprantu<br>
+                            Tavo akys man meluoja<br>
+                            Ir neleidžia atsikvėpt<br>
+                            Na kodėl tu kalbi, o man tylėt?<br><br>
+                            Tu palinkėk man gero vėjo<br>
+                            Palinkėk geros kloties<br>
+                            Palinkėki džiaugsmo, meilės ir vilties<br>
+                            Tu palinkėk man gero vėjo<br>
+                            Tik nelinkėk piktos lemties<br>
+                            Kad galėčiau aš gyvent be praeities<br>
+                            Kad galėčiau aš gyvent be praeities<br><br>
+                            Aš nenoriu taip gyventi<br>
+                            Kaip anksčiau aš gyvenau<br>
+                            Ir klausytis pažadų<br>
+                            Kurios aš mintinai žinau<br>
+                            Tu nepyk<br>
+                            Ir suprask<br><br>
+                            Reikia baigti šį žaidimą<br>
+                            Bus geriau ir man ir tau<br>
+                            Tu kalbėdavai kad myli<br>
+                            Bet aš meilės nematau<br>
+                            Išeinu<br>
+                            Atleiski man<br><br>
+                            Suprantu, nesulaikysiu aš tavęs<br>
+                            Tu teisus ar ne, gyvenimas išspręs<br>
+                            Gal ir aš ne visada<br>
+                            Tau buvau tikrai gera<br>
+                            Aš viena, tavęs šalia jau nebėra<br><br>
+                            Tu palinkėk man gero vėjo<br>
+                            Palinkėk geros kloties<br>
+                            Palinkėki džiaugsmo, meilės ir vilties<br>
+                            Tu palinkėk man gero vėjo<br>
+                            Tik nelinkėk piktos lemties<br>
+                            Kad galėčiau aš gyvent be praeities<br>
+                            Kad galėčiau aš gyvent be praeities
+                        </p>{{--tekstas kuris atsiranda kaireje--}}
+                        <a href="#" class="play-video" draggable="false" data-video="https://www.youtube.com/embed/dCzDUuirh_k?controls=0"> {{--video linkas--}}
+                            <img draggable="false" src="../img/palinkek man gero.png"/>{{--nuotrauka--}}
+                        </a>
+                    </div>
                 </li>
                 <li>
                     <div class="song-details">
-                        <p class="song-text">Aš visą dieną buvau kine<br>Laukiau kol filmas pakeis mane<br>Juoką ir ašaras ten radau<br>Tik tavo veido nepamačiau<br><br>
-                            Visa tai tęsiasi jau senai<br>Tai, kaip ir tau, aš žinau tikrai<br>Ieškau tavęs jei girdi mane<br>Gal pasirodysi ekrane<br><br>
-                            Aš kreipiuosi tiesiai į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba STEREO<br><br>
-                            Radijo bangos anksti ryte<br>Persmelkia gaiviai kasdien mane<br>Eteris klykia šimtais balsų<br>Tavo tiktai nerandu tarp jų<br><br>
+                        <p class="song-text">Aš visą dieną buvau kine<br>Laukiau kol filmas pakeis mane<br>Juoką ir
+                            ašaras ten radau<br>Tik tavo veido nepamačiau<br><br>
+                            Visa tai tęsiasi jau senai<br>Tai, kaip ir tau, aš žinau tikrai<br>Ieškau tavęs jei girdi
+                            mane<br>Gal pasirodysi ekrane<br><br>
+                            Aš kreipiuosi tiesiai į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba
+                            STEREO<br><br>
+                            Radijo bangos anksti ryte<br>Persmelkia gaiviai kasdien mane<br>Eteris klykia šimtais
+                            balsų<br>Tavo tiktai nerandu tarp jų<br><br>
                             Aš reklamas vėl mieste skaitau<br>Tavo žinutės dar negavau<br><br>
-                            Aš kreipiuosi tiesiai į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba STEREO<br><br>
-                            Aš kreipiuosi dar kart į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba STEREO<br>STEREO</p>
-                        <button class="play-video" data-video="https://www.youtube.com/embed/MiSqj3bIe-0">Play
-                            Video
-                        </button>
-                        <img src="../img/mono arba stereo.png"/>
+                            Aš kreipiuosi tiesiai į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba
+                            STEREO<br><br>
+                            Aš kreipiuosi dar kart į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba STEREO<br>STEREO
+                        </p>
+                        <a href="#" class="play-video" draggable="false"
+                           data-video="https://www.youtube.com/embed/MiSqj3bIe-0"><img draggable="false"
+                                                                                       src="../img/mono arba stereo.png"/></a>
                     </div>
                 </li>
                 <li>
                     <div class="song-details">
-                        <p class="song-text"> Laukiau kol filmas pakeis mane<br>Aš visą dieną buvau kine<br></p>
-                        <button class="play-video" data-video="https://www.youtube.com/embed/abc123">Play Video
-                        </button>
-                        <img src="../img/kitoks pasaulis.png"/>
+                        <p class="song-text">Nežinau galbūt aš keistas<br>
+                            O gal šiaip tokia diena<br>
+                            Nusibodo viskas man<br>
+                            Visko man jau gana<br>
+                            Taip sunku<br>
+                            Neramu<br><br>
+                            Man atrodė, kad aš myliu<br>
+                            Kad tik meilėje jėga<br>
+                            O dabar širdy taip tuščia<br>
+                            Ir artėja pabaiga<br>
+                            Aš tariu:<br>
+                            Lik sveika<br><br>
+                            Tavo žodžiai tartum bangos be krantų<br>
+                            Nežinau, kodėl tavęs nesuprantu<br>
+                            Tavo akys man meluoja<br>
+                            Ir neleidžia atsikvėpt<br>
+                            Na kodėl tu kalbi, o man tylėt?<br><br>
+                            Tu palinkėk man gero vėjo<br>
+                            Palinkėk geros kloties<br>
+                            Palinkėki džiaugsmo, meilės ir vilties<br>
+                            Tu palinkėk man gero vėjo<br>
+                            Tik nelinkėk piktos lemties<br>
+                            Kad galėčiau aš gyvent be praeities<br>
+                            Kad galėčiau aš gyvent be praeities<br><br>
+                            Aš nenoriu taip gyventi<br>
+                            Kaip anksčiau aš gyvenau<br>
+                            Ir klausytis pažadų<br>
+                            Kurios aš mintinai žinau<br>
+                            Tu nepyk<br>
+                            Ir suprask<br><br>
+                            Reikia baigti šį žaidimą<br>
+                            Bus geriau ir man ir tau<br>
+                            Tu kalbėdavai kad myli<br>
+                            Bet aš meilės nematau<br>
+                            Išeinu<br>
+                            Atleiski man<br><br>
+                            Suprantu, nesulaikysiu aš tavęs<br>
+                            Tu teisus ar ne, gyvenimas išspręs<br>
+                            Gal ir aš ne visada<br>
+                            Tau buvau tikrai gera<br>
+                            Aš viena, tavęs šalia jau nebėra<br><br>
+                            Tu palinkėk man gero vėjo<br>
+                            Palinkėk geros kloties<br>
+                            Palinkėki džiaugsmo, meilės ir vilties<br>
+                            Tu palinkėk man gero vėjo<br>
+                            Tik nelinkėk piktos lemties<br>
+                            Kad galėčiau aš gyvent be praeities<br>
+                            Kad galėčiau aš gyvent be praeities
+                        </p>
+                        <a href="#" class="play-video" draggable="false"
+                           data-video="https://www.youtube.com/embed/dCzDUuirh_k?controls=0"><img draggable="false"
+                                                                                                  src="../img/palinkek man gero.png"/></a>
                     </div>
                 </li>
-
                 <li>
-                    <button class="play-video" data-video="https://www.youtube.com/embed/def456">Play Video</button>
-                    <img src="../img/vasara.png"/>
+                    <div class="song-details">
+                        <p class="song-text">Aš visą dieną buvau kine<br>Laukiau kol filmas pakeis mane<br>Juoką ir
+                            ašaras ten radau<br>Tik tavo veido nepamačiau<br><br>
+                            Visa tai tęsiasi jau senai<br>Tai, kaip ir tau, aš žinau tikrai<br>Ieškau tavęs jei girdi
+                            mane<br>Gal pasirodysi ekrane<br><br>
+                            Aš kreipiuosi tiesiai į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba
+                            STEREO<br><br>
+                            Radijo bangos anksti ryte<br>Persmelkia gaiviai kasdien mane<br>Eteris klykia šimtais
+                            balsų<br>Tavo tiktai nerandu tarp jų<br><br>
+                            Aš reklamas vėl mieste skaitau<br>Tavo žinutės dar negavau<br><br>
+                            Aš kreipiuosi tiesiai į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba
+                            STEREO<br><br>
+                            Aš kreipiuosi dar kart į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba STEREO<br>STEREO
+                        </p>
+                        <a href="#" class="play-video" draggable="false"
+                           data-video="https://www.youtube.com/embed/MiSqj3bIe-0"><img draggable="false"
+                                                                                       src="../img/mono arba stereo.png"/></a>
+                    </div>
                 </li>
                 <li>
-                    <button class="play-video" data-video="https://www.youtube.com/embed/xyz789">Play Video</button>
-                    <img src="../img/Rondo sala.png"/>
+                    <div class="song-details">
+                        <p class="song-text">Nežinau galbūt aš keistas<br>
+                            O gal šiaip tokia diena<br>
+                            Nusibodo viskas man<br>
+                            Visko man jau gana<br>
+                            Taip sunku<br>
+                            Neramu<br><br>
+                            Man atrodė, kad aš myliu<br>
+                            Kad tik meilėje jėga<br>
+                            O dabar širdy taip tuščia<br>
+                            Ir artėja pabaiga<br>
+                            Aš tariu:<br>
+                            Lik sveika<br><br>
+                            Tavo žodžiai tartum bangos be krantų<br>
+                            Nežinau, kodėl tavęs nesuprantu<br>
+                            Tavo akys man meluoja<br>
+                            Ir neleidžia atsikvėpt<br>
+                            Na kodėl tu kalbi, o man tylėt?<br><br>
+                            Tu palinkėk man gero vėjo<br>
+                            Palinkėk geros kloties<br>
+                            Palinkėki džiaugsmo, meilės ir vilties<br>
+                            Tu palinkėk man gero vėjo<br>
+                            Tik nelinkėk piktos lemties<br>
+                            Kad galėčiau aš gyvent be praeities<br>
+                            Kad galėčiau aš gyvent be praeities<br><br>
+                            Aš nenoriu taip gyventi<br>
+                            Kaip anksčiau aš gyvenau<br>
+                            Ir klausytis pažadų<br>
+                            Kurios aš mintinai žinau<br>
+                            Tu nepyk<br>
+                            Ir suprask<br><br>
+                            Reikia baigti šį žaidimą<br>
+                            Bus geriau ir man ir tau<br>
+                            Tu kalbėdavai kad myli<br>
+                            Bet aš meilės nematau<br>
+                            Išeinu<br>
+                            Atleiski man<br><br>
+                            Suprantu, nesulaikysiu aš tavęs<br>
+                            Tu teisus ar ne, gyvenimas išspręs<br>
+                            Gal ir aš ne visada<br>
+                            Tau buvau tikrai gera<br>
+                            Aš viena, tavęs šalia jau nebėra<br><br>
+                            Tu palinkėk man gero vėjo<br>
+                            Palinkėk geros kloties<br>
+                            Palinkėki džiaugsmo, meilės ir vilties<br>
+                            Tu palinkėk man gero vėjo<br>
+                            Tik nelinkėk piktos lemties<br>
+                            Kad galėčiau aš gyvent be praeities<br>
+                            Kad galėčiau aš gyvent be praeities
+                        </p>
+                        <a href="#" class="play-video" draggable="false"
+                           data-video="https://www.youtube.com/embed/dCzDUuirh_k?controls=0"><img draggable="false"
+                                                                                                  src="../img/palinkek man gero.png"/></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="song-details">
+                        <p class="song-text">Aš visą dieną buvau kine<br>Laukiau kol filmas pakeis mane<br>Juoką ir
+                            ašaras ten radau<br>Tik tavo veido nepamačiau<br><br>
+                            Visa tai tęsiasi jau senai<br>Tai, kaip ir tau, aš žinau tikrai<br>Ieškau tavęs jei girdi
+                            mane<br>Gal pasirodysi ekrane<br><br>
+                            Aš kreipiuosi tiesiai į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba
+                            STEREO<br><br>
+                            Radijo bangos anksti ryte<br>Persmelkia gaiviai kasdien mane<br>Eteris klykia šimtais
+                            balsų<br>Tavo tiktai nerandu tarp jų<br><br>
+                            Aš reklamas vėl mieste skaitau<br>Tavo žinutės dar negavau<br><br>
+                            Aš kreipiuosi tiesiai į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba
+                            STEREO<br><br>
+                            Aš kreipiuosi dar kart į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba STEREO<br>STEREO
+                        </p>
+                        <a href="#" class="play-video" draggable="false"
+                           data-video="https://www.youtube.com/embed/MiSqj3bIe-0"><img draggable="false"
+                                                                                       src="../img/mono arba stereo.png"/></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="song-details">
+                        <p class="song-text">Nežinau galbūt aš keistas<br>
+                            O gal šiaip tokia diena<br>
+                            Nusibodo viskas man<br>
+                            Visko man jau gana<br>
+                            Taip sunku<br>
+                            Neramu<br><br>
+                            Man atrodė, kad aš myliu<br>
+                            Kad tik meilėje jėga<br>
+                            O dabar širdy taip tuščia<br>
+                            Ir artėja pabaiga<br>
+                            Aš tariu:<br>
+                            Lik sveika<br><br>
+                            Tavo žodžiai tartum bangos be krantų<br>
+                            Nežinau, kodėl tavęs nesuprantu<br>
+                            Tavo akys man meluoja<br>
+                            Ir neleidžia atsikvėpt<br>
+                            Na kodėl tu kalbi, o man tylėt?<br><br>
+                            Tu palinkėk man gero vėjo<br>
+                            Palinkėk geros kloties<br>
+                            Palinkėki džiaugsmo, meilės ir vilties<br>
+                            Tu palinkėk man gero vėjo<br>
+                            Tik nelinkėk piktos lemties<br>
+                            Kad galėčiau aš gyvent be praeities<br>
+                            Kad galėčiau aš gyvent be praeities<br><br>
+                            Aš nenoriu taip gyventi<br>
+                            Kaip anksčiau aš gyvenau<br>
+                            Ir klausytis pažadų<br>
+                            Kurios aš mintinai žinau<br>
+                            Tu nepyk<br>
+                            Ir suprask<br><br>
+                            Reikia baigti šį žaidimą<br>
+                            Bus geriau ir man ir tau<br>
+                            Tu kalbėdavai kad myli<br>
+                            Bet aš meilės nematau<br>
+                            Išeinu<br>
+                            Atleiski man<br><br>
+                            Suprantu, nesulaikysiu aš tavęs<br>
+                            Tu teisus ar ne, gyvenimas išspręs<br>
+                            Gal ir aš ne visada<br>
+                            Tau buvau tikrai gera<br>
+                            Aš viena, tavęs šalia jau nebėra<br><br>
+                            Tu palinkėk man gero vėjo<br>
+                            Palinkėk geros kloties<br>
+                            Palinkėki džiaugsmo, meilės ir vilties<br>
+                            Tu palinkėk man gero vėjo<br>
+                            Tik nelinkėk piktos lemties<br>
+                            Kad galėčiau aš gyvent be praeities<br>
+                            Kad galėčiau aš gyvent be praeities
+                        </p>
+                        <a href="#" class="play-video" draggable="false"
+                           data-video="https://www.youtube.com/embed/dCzDUuirh_k?controls=0"><img draggable="false"
+                                                                                                  src="../img/palinkek man gero.png"/></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="song-details">
+                        <p class="song-text">Aš visą dieną buvau kine<br>Laukiau kol filmas pakeis mane<br>Juoką ir
+                            ašaras ten radau<br>Tik tavo veido nepamačiau<br><br>
+                            Visa tai tęsiasi jau senai<br>Tai, kaip ir tau, aš žinau tikrai<br>Ieškau tavęs jei girdi
+                            mane<br>Gal pasirodysi ekrane<br><br>
+                            Aš kreipiuosi tiesiai į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba
+                            STEREO<br><br>
+                            Radijo bangos anksti ryte<br>Persmelkia gaiviai kasdien mane<br>Eteris klykia šimtais
+                            balsų<br>Tavo tiktai nerandu tarp jų<br><br>
+                            Aš reklamas vėl mieste skaitau<br>Tavo žinutės dar negavau<br><br>
+                            Aš kreipiuosi tiesiai į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba
+                            STEREO<br><br>
+                            Aš kreipiuosi dar kart į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba STEREO<br>STEREO
+                        </p>
+                        <a href="#" class="play-video" draggable="false"
+                           data-video="https://www.youtube.com/embed/MiSqj3bIe-0"><img draggable="false"
+                                                                                       src="../img/mono arba stereo.png"/></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="song-details">
+                        <p class="song-text">Nežinau galbūt aš keistas<br>
+                            O gal šiaip tokia diena<br>
+                            Nusibodo viskas man<br>
+                            Visko man jau gana<br>
+                            Taip sunku<br>
+                            Neramu<br><br>
+                            Man atrodė, kad aš myliu<br>
+                            Kad tik meilėje jėga<br>
+                            O dabar širdy taip tuščia<br>
+                            Ir artėja pabaiga<br>
+                            Aš tariu:<br>
+                            Lik sveika<br><br>
+                            Tavo žodžiai tartum bangos be krantų<br>
+                            Nežinau, kodėl tavęs nesuprantu<br>
+                            Tavo akys man meluoja<br>
+                            Ir neleidžia atsikvėpt<br>
+                            Na kodėl tu kalbi, o man tylėt?<br><br>
+                            Tu palinkėk man gero vėjo<br>
+                            Palinkėk geros kloties<br>
+                            Palinkėki džiaugsmo, meilės ir vilties<br>
+                            Tu palinkėk man gero vėjo<br>
+                            Tik nelinkėk piktos lemties<br>
+                            Kad galėčiau aš gyvent be praeities<br>
+                            Kad galėčiau aš gyvent be praeities<br><br>
+                            Aš nenoriu taip gyventi<br>
+                            Kaip anksčiau aš gyvenau<br>
+                            Ir klausytis pažadų<br>
+                            Kurios aš mintinai žinau<br>
+                            Tu nepyk<br>
+                            Ir suprask<br><br>
+                            Reikia baigti šį žaidimą<br>
+                            Bus geriau ir man ir tau<br>
+                            Tu kalbėdavai kad myli<br>
+                            Bet aš meilės nematau<br>
+                            Išeinu<br>
+                            Atleiski man<br><br>
+                            Suprantu, nesulaikysiu aš tavęs<br>
+                            Tu teisus ar ne, gyvenimas išspręs<br>
+                            Gal ir aš ne visada<br>
+                            Tau buvau tikrai gera<br>
+                            Aš viena, tavęs šalia jau nebėra<br><br>
+                            Tu palinkėk man gero vėjo<br>
+                            Palinkėk geros kloties<br>
+                            Palinkėki džiaugsmo, meilės ir vilties<br>
+                            Tu palinkėk man gero vėjo<br>
+                            Tik nelinkėk piktos lemties<br>
+                            Kad galėčiau aš gyvent be praeities<br>
+                            Kad galėčiau aš gyvent be praeities
+                        </p>
+                        <a href="#" class="play-video" draggable="false"
+                           data-video="https://www.youtube.com/embed/dCzDUuirh_k?controls=0"><img draggable="false"
+                                                                                                  src="../img/palinkek man gero.png"/></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="song-details">
+                        <p class="song-text">Aš visą dieną buvau kine<br>Laukiau kol filmas pakeis mane<br>Juoką ir
+                            ašaras ten radau<br>Tik tavo veido nepamačiau<br><br>
+                            Visa tai tęsiasi jau senai<br>Tai, kaip ir tau, aš žinau tikrai<br>Ieškau tavęs jei girdi
+                            mane<br>Gal pasirodysi ekrane<br><br>
+                            Aš kreipiuosi tiesiai į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba
+                            STEREO<br><br>
+                            Radijo bangos anksti ryte<br>Persmelkia gaiviai kasdien mane<br>Eteris klykia šimtais
+                            balsų<br>Tavo tiktai nerandu tarp jų<br><br>
+                            Aš reklamas vėl mieste skaitau<br>Tavo žinutės dar negavau<br><br>
+                            Aš kreipiuosi tiesiai į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba
+                            STEREO<br><br>
+                            Aš kreipiuosi dar kart į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba STEREO<br>STEREO
+                        </p>
+                        <a href="#" class="play-video" draggable="false"
+                           data-video="https://www.youtube.com/embed/MiSqj3bIe-0"><img draggable="false"
+                                                                                       src="../img/mono arba stereo.png"/></a>
+                    </div>
                 </li>
             </ul>
-            <div class="scroll-arrow" id="scroll-right" onclick="scrollRight()">
-                &#8594;
+            <div class="scroll-arrow arrow2" id="scroll-right" onclick="scrollRight()">
+                <img draggable="false" src="../img/desine.png" onerror="this.onerror=null; this.src='../img/desine.svg'" style="width: 7vw;"/>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-12 col-md-6 order-2 order-md-1 song_info_box">
             <div id="song-info">
-                <p>Informacija apie laidas<br>paspaudus ant epizodo mygtuko si informacija isnyks</p>
+                <p>Informacija apie laidas<br>paspaudus ant epizodo mygtuko si<br> informacija isnyks</p> {{--Tekstine informacija kuria rodo tik uzkrovus puslapi--}}
             </div>
         </div>
         <div class="col-12 col-md-6 order-1 order-md-2 video_player_box">
-            <div id="video-player"><p>logotipas paspaudus ant epizodo mygtuko si informacija isnyks</p></div>
+            <div id="video-player">
+                <div class="video_pirmas_logotipas">
+                    <img src="../img/logo2.png"/> {{--nuotrauka kuria parodo tik uzkrovus puslapi--}}
+
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -260,14 +649,14 @@
     // When a user clicks on the right arrow, the ul will scroll 750px to the right
     scrollRight.addEventListener('click', (event) => {
         if (!isDragging) {
-            imgList.scrollBy(750, 0);
+            imgList.scrollBy(700, 0);
         }
     });
 
     // When a user clicks on the left arrow, the ul will scroll 750px to the left
     scrollLeft.addEventListener('click', (event) => {
         if (!isDragging) {
-            imgList.scrollBy(-750, 0);
+            imgList.scrollBy(-700, 0);
         }
     });
 
