@@ -13,11 +13,7 @@
 
 
 <style>
-    section {
-        text-align: center;
-        margin-top: 2.5%;
-    }
-
+    /* Judancio meniu stilistika START */
     .scroll-arrow {
         width: 10%;
         display: inline-block;
@@ -36,7 +32,7 @@
         opacity: 1;
     }
 
-    ul {
+    .scrool_menu ul {
         width: 70%;
         scroll-behavior: smooth;
         display: inline-block;
@@ -52,11 +48,11 @@
         -ms-overflow-style: none;
     }
 
-    ul::-webkit-scrollbar {
+    .scrool_menu ul::-webkit-scrollbar {
         display: none;
     }
 
-    li {
+    .scrool_menu li {
         list-style: none;
         display: inline-block;
         position: relative;
@@ -67,23 +63,19 @@
         transition: 0.2s;
     }
 
-    li img {
-
+    .scrool_menu li img {
         width: 200px;
-        pointer-events: none; /* disable mouse events on the img elements */
+        pointer-events: none; /* panaikinamas  selectinimas ir draginimas elementu kaip swipini */
     }
-
-    li:hover {
-        transition: 0.2s;
-        filter: grayscale(0);
-    }
-    button{
+    .scrool_menu button {
         overflow: visible;
         display: flex;
         position: relative;
         right: -82px;
         top: 163px;
     }
+    /* Judancio meniu stilistika END */
+    /* Muzikos teksto nustatymai END */
     #song-info {
         border: 2px solid black;
         width: 60vh;
@@ -92,6 +84,7 @@
         justify-content: center;
         align-items: center;
     }
+
     #video-player {
         border: 2px solid black;
         width: 60vh;
@@ -100,6 +93,16 @@
         justify-content: center;
         align-items: center;
     }
+
+    .song-text {
+        display: none;
+    }
+
+    #song-info pre {
+        white-space: pre-wrap;
+        overflow: hidden;
+    }
+    /* Muzikos teksto nustatymai END */
 </style>
 
 <body>
@@ -115,81 +118,52 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row scrool_menu">
         <div class="col-md-12">
-            <section>
-                <div class="scroll-arrow" id="scroll-left">
-                    &#8592;
-                </div>
-                <ul id="imgList">
-                    <li data-song="mano stereo">
-                        <button class="play-video" data-video="https://www.youtube.com/embed/MiSqj3bIe-0">Play Video</button>
-                        <img src="../img/palinkek man gero.png"/>
-                    </li>
-                    <li data-song="mano stereo">
-                        <button class="play-video" data-video="https://www.youtube.com/embed/MiSqj3bIe-0">Play Video</button>
-                        <img src="../img/juoda orchideja.png"/>
-                    </li>
-                    <li data-song="Aš visą dieną buvau kine
-Laukiau kol filmas pakeis mane
-Juoką ir ašaras ten radau
-Tik tavo veido nepamačiau
-
-
-Visa tai tęsiasi jau senai
-Tai, kaip ir tau, aš žinau tikrai
-Ieškau tavęs jei girdi mane
-Gal pasirodysi ekrane
-
-
-Aš kreipiuosi tiesiai į aukščiausią ministeriją
-Gal gali atsiųst žinutę MONO arba STEREO
-
-
-Radijo bangos anksti ryte
-Persmelkia gaiviai kasdien mane
-Eteris klykia šimtais balsų
-Tavo tiktai nerandu tarp jų
-
-
-Aš kreipiuosi tiesiai į aukščiausią ministeriją
-Gal gali atsiųst žinutę MONO arba STEREO
-
-
-Aš reklamas vėl mieste skaitau
-Tavo žinutės dar negavau
-
-
-Aš kreipiuosi tiesiai į aukščiausią ministeriją
-Gal gali atsiųst žinutę MONO arba STEREO
-
-
-Aš kreipiuosi dar kart į aukščiausią ministeriją
-Gal gali atsiųst žinutę MONO arba STEREO
-STEREO
-
-http://dainutekstai.lt/r81/andrius-mamontovas-mono-arba-stereo.html">
-                        <button class="play-video" data-video="https://www.youtube.com/embed/MiSqj3bIe-0">Play Video</button>
+            <div class="scroll-arrow" id="scroll-left">
+                &#8592;
+            </div>
+            <ul id="imgList">
+                <li data-song="mano stereo">
+                    <button class="play-video" data-video="https://www.youtube.com/embed/MiSqj3bIe-0">Play Video
+                    </button>
+                    <img src="../img/palinkek man gero.png"/>
+                </li>
+                <li data-song="mano stereo">
+                    <button class="play-video" data-video="https://www.youtube.com/embed/MiSqj3bIe-0">Play Video
+                    </button>
+                    <img src="../img/juoda orchideja.png"/>
+                </li>
+                <li>
+                    <div class="song-details">
+                        <p class="song-text">Aš visą dieną buvau kine<br>Laukiau kol filmas pakeis mane<br></p>
+                        <button class="play-video" data-video="https://www.youtube.com/embed/MiSqj3bIe-0">Play
+                            Video
+                        </button>
                         <img src="../img/mono arba stereo.png"/>
-                    </li>
-
-                    <li data-song="mano pasaulis">
-                        <button class="play-video" data-video="https://www.youtube.com/embed/abc123">Play Video</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="song-details">
+                        <p class="song-text"> Laukiau kol filmas pakeis mane<br>Aš visą dieną buvau kine<br></p>
+                        <button class="play-video" data-video="https://www.youtube.com/embed/abc123">Play Video
+                        </button>
                         <img src="../img/kitoks pasaulis.png"/>
-                    </li>
-                    <li>
-                        <button class="play-video" data-video="https://www.youtube.com/embed/def456">Play Video</button>
-                        <img src="../img/vasara.png"/>
-                    </li>
-                    <li>
-                        <button class="play-video" data-video="https://www.youtube.com/embed/xyz789">Play Video</button>
-                        <img src="../img/Rondo sala.png"/>
-                    </li>
-                </ul>
-                <div class="scroll-arrow" id="scroll-right" onclick="scrollRight()">
-                    &#8594;
-                </div>
-            </section>
+                    </div>
+                </li>
+
+                <li>
+                    <button class="play-video" data-video="https://www.youtube.com/embed/def456">Play Video</button>
+                    <img src="../img/vasara.png"/>
+                </li>
+                <li>
+                    <button class="play-video" data-video="https://www.youtube.com/embed/xyz789">Play Video</button>
+                    <img src="../img/Rondo sala.png"/>
+                </li>
+            </ul>
+            <div class="scroll-arrow" id="scroll-right" onclick="scrollRight()">
+                &#8594;
+            </div>
         </div>
     </div>
 </div>
@@ -249,16 +223,16 @@ http://dainutekstai.lt/r81/andrius-mamontovas-mono-arba-stereo.html">
     var songInfo = document.getElementById('song-info');
 
     for (var i = 0; i < playButtons.length; i++) {
-        playButtons[i].addEventListener('click', function() {
-            // Get the data-video and data-song attributes from the li element containing the button
-            var videoLink = this.getAttribute('data-video');
-            var songName = this.parentNode.getAttribute('data-song');
+        playButtons[i].addEventListener('click', function () {
+            // Get the song text from the correct song details element
+            var songText = this.parentNode.querySelector('.song-text').innerHTML;
 
-            // Update the video player with the selected video
+            // Get the video link from the clicked button's data-video attribute
+            var videoLink = this.getAttribute('data-video');
             videoPlayer.innerHTML = '<iframe width="500" height="500" src="' + videoLink + '" title="Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
 
-            // Update the song info with the selected song name
-            songInfo.innerHTML = '<p>' + songName + '</p>';
+            // Update the song info with the selected song text
+            songInfo.innerHTML = '<p>' + songText + '</p>';
         });
     }
 
