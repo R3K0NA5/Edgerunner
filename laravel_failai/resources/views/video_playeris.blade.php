@@ -11,8 +11,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 
-
 <style>
+
+
+    /* elementai kuriuos istrinti ikeliant faila*/
+    .headeris{
+        height: 10%;
+        width: 100%;
+        background-color:#005d7c ;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    .footeris{
+        height: 10%;
+        width: 100%;
+        background-color:#005d7c ;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    /* elementai kuriuos istrinti ikeliant faila*/
+
+
+
     /* Judancio meniu stilistika START */
     .scroll-arrow {
         width: 10%;
@@ -30,6 +52,10 @@
     .scroll-arrow:hover {
         transition: 0.2s;
         opacity: 1;
+    }
+
+    .scrool_menu{
+        border: 2px solid black;
     }
 
     .scrool_menu ul {
@@ -76,24 +102,47 @@
     }
     /* Judancio meniu stilistika END */
     /* Muzikos teksto nustatymai START */
+    .song_info_box {
+        border: 2px solid blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     #song-info {
         border: 2px solid black;
-        width: 60vh;
-        height: 60vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        height: 72%;
+        position: relative;
+        width: 69%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
     }
 
-    #video-player {
-        border: 2px solid black;
-        width: 60vh;
-        height: 60vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    #song-info > * {
+        margin: 0;
+        padding: 0;
     }
 
+    #song-info div {
+        font-size: clamp(0.8rem, 1.2vw, 1.2rem);
+        max-width: 100%;
+        max-height: 100%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-wrap: break-word;
+    }
+
+    #song-info p {
+        margin: 0;
+        padding: 0;
+        font-size: clamp(0.8rem, 1.2vw, 1.2rem);
+        max-width: 100%;
+        max-height: 100%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
     .song-text {
         display: none;
     }
@@ -102,22 +151,38 @@
         white-space: pre-wrap;
         overflow: hidden;
     }
+
+.video_player_box{
+    border: 2px solid red;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    #video-player {
+        border: 2px solid black;
+        width: 100%;
+        max-width: 80vh;
+        height: 0;
+        padding-bottom: 56.25%; /* The aspect ratio of a standard video player (9/16) multiplied by 100 */
+        position: relative;
+        background-color: #005d7c;
+    }
+    #video-player iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
     /* Muzikos teksto nustatymai END */
 </style>
 
-<body>
 
+<body>
+<div class="row headeris"></div>
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-6">
-            <div id="video-player"></div>
-        </div>
-        <div class="col-md-6">
-            <div id="song-info">
-                <p>Pagrindinis langas paprasta informacija</p>
-            </div>
-        </div>
-    </div>
     <div class="row scrool_menu">
         <div class="col-md-12">
             <div class="scroll-arrow" id="scroll-left">
@@ -127,7 +192,7 @@
                 <li data-song="mano stereo">
                     <button class="play-video" data-video="https://www.youtube.com/embed/MiSqj3bIe-0">Play Video
                     </button>
-                    <img src="../img/palinkek man gero.png"/>
+                    <a href="#"> <img src="../img/palinkek man gero.png"/> </a>
                 </li>
                 <li data-song="mano stereo">
                     <button class="play-video" data-video="https://www.youtube.com/embed/MiSqj3bIe-0">Play Video
@@ -136,7 +201,13 @@
                 </li>
                 <li>
                     <div class="song-details">
-                        <p class="song-text">Aš visą dieną buvau kine<br>Laukiau kol filmas pakeis mane<br></p>
+                        <p class="song-text">Aš visą dieną buvau kine<br>Laukiau kol filmas pakeis mane<br>Juoką ir ašaras ten radau<br>Tik tavo veido nepamačiau<br><br>
+                            Visa tai tęsiasi jau senai<br>Tai, kaip ir tau, aš žinau tikrai<br>Ieškau tavęs jei girdi mane<br>Gal pasirodysi ekrane<br><br>
+                            Aš kreipiuosi tiesiai į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba STEREO<br><br>
+                            Radijo bangos anksti ryte<br>Persmelkia gaiviai kasdien mane<br>Eteris klykia šimtais balsų<br>Tavo tiktai nerandu tarp jų<br><br>
+                            Aš reklamas vėl mieste skaitau<br>Tavo žinutės dar negavau<br><br>
+                            Aš kreipiuosi tiesiai į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba STEREO<br><br>
+                            Aš kreipiuosi dar kart į aukščiausią ministeriją<br>Gal gali atsiųst žinutę MONO arba STEREO<br>STEREO</p>
                         <button class="play-video" data-video="https://www.youtube.com/embed/MiSqj3bIe-0">Play
                             Video
                         </button>
@@ -166,8 +237,18 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12 col-md-6 order-2 order-md-1 song_info_box">
+            <div id="song-info">
+                <p>Informacija apie laidas<br>paspaudus ant epizodo mygtuko si informacija isnyks</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 order-1 order-md-2 video_player_box">
+            <div id="video-player"><p>logotipas paspaudus ant epizodo mygtuko si informacija isnyks</p></div>
+        </div>
+    </div>
 </div>
-
+<div class="row footeris"></div>
 <script>
     var imgList = document.getElementById('imgList');
     var scrollRight = document.getElementById('scroll-right');
