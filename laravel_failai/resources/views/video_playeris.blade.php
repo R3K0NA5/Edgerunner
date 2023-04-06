@@ -75,7 +75,7 @@
         top: 163px;
     }
     /* Judancio meniu stilistika END */
-    /* Muzikos teksto nustatymai END */
+    /* Muzikos teksto nustatymai START */
     #song-info {
         border: 2px solid black;
         width: 60vh;
