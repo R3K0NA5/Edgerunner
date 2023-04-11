@@ -551,3 +551,17 @@ html, body, .game {
 .tekkstoSpalvos{
     color: #c8c7d5;
 }
+.centras {
+    color: red;
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* set the gap size */
+}
+
+@media print {
+    #header,
+    #footer,
+    #url-info {
+        display: none !important;
+    }
+}

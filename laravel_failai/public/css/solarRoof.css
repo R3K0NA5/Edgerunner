@@ -1,0 +1,109 @@
+.row{
+    margin: 0;
+}
+.marginas{
+    margin:0;
+}
+.matavimoObjektas {
+    position: relative;
+    width: 1003px;
+    height: 792px;
+    margin: 0 auto;
+}
+
+.matavimoObjektas img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: -1;
+}
+
+.matavimasH1 {
+    position: absolute;
+    left: 76px;
+    top: 474px;
+    z-index: 1;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.matavimasH2 {
+    position: absolute;
+    left: 867px;
+    top: 405px;
+    z-index: 1;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.matavimasW {
+    position: absolute;
+    left: 173px;
+    top: 665px;
+    z-index: 1;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.matavimasL {
+    position: absolute;
+    left: 647px;
+    top: 663px;
+    z-index: 1;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.uzklausa{
+    font-size: 25px;
+    background-color: rgba(78, 154, 6, 0.5);
+    border-bottom: 5px solid #aab2b9;
+    border-right: 5px solid #aab2b9;
+}
+
+.pasirinkimas{
+    font-size: 20px;
+    border-bottom: 5px solid #aab2b9;
+    border-left: 5px solid #aab2b9;
+
+}
+.matavimoObjektas2{
+    height: 10%;
+}
+.uzklausaDuomenys{
+    font-size: 25px;
+    background-color: rgba(78, 154, 6, 0.5);
+    border: 5px solid #ffffff;
+
+}
+
+.pasirinkimasDuomenys{
+    font-size: 20px;
+    border-bottom: 5px solid rgba(78, 154, 6, 0.5);
+
+
+}
+
+.parasai{
+    border: 5px solid #aab2b9;
+    margin: 0;
+    padding: 0;
+}
+.parasai2{
+    border-bottom: 5px solid #aab2b9;
+    margin: 0;
+    padding: 0;
+}
+/*@media print {
+    .matavimoObjektas {
+        background: url('../img/terasos/verikalas.png') no-repeat center center !important;
+        background-size: contain !important;
+    }
+}*/

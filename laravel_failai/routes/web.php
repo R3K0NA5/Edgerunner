@@ -4,7 +4,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\SpriteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VideoPlayerController;
 use App\Models\User;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +24,50 @@ Route::get('/registernewaccount', function () {
 Route::get('/connect', function () {
     return view('welcome_login');
 });
+Route::get('/playeris', function () {
+    return view('playeris');
+});
+Route::get('/video_playeris', function () {
+    return view('video_playeris');
+});
 
+
+
+
+
+
+
+
+Route::get('/video_playeris_video', function () {
+    return view('video_playeris_video');
+});
+Route::get('/video_playeris_video/{group}', function ($group) {
+    $songs = Video::where('group', $group)->get();
+    return view('video_playeris_video', ['songs' => $songs]);
+});
+Route::get('/video_playeris_video', [VideoPlayerController::class, 'videoPlayerisVideo']);
+Route::get('/video_playeris_video/{group}', [VideoPlayerController::class, 'videoPlayerisVideoGroup']);
+
+
+
+
+
+
+
+Route::get('/1', function () {
+    session()->forget('formData');
+    return view('forma');
+});
+Route::get('/2', function () {
+    $formData = session('formData');
+    return view('testine', $formData);
+});
+Route::get('/3', function () {
+    $formData = session('formData');
+    return view('testine2', $formData);
+});
+Route::post('/submit-form', 'App\Http\Controllers\FormController@processForm');
+Route::get('/generate-pdf', 'App\Http\Controllers\MyTCPDFController@generatePDF');
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 
