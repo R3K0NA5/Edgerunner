@@ -12,7 +12,7 @@
 </head>
 
 <style>
-/* pagrindinis karuseles box START */
+    /* pagrindinis karuseles box START */
     .video_box_1_atm {
         border: 1px solid rgba(255, 0, 0, 0);
         height: 10vw;
@@ -25,38 +25,121 @@
     }
 
     .video_box_1_atm img {
-        border: 1px solid rgba(0, 128, 0, 0);
-        height: 20vw;
-        width: 20vw;
-        clip-path: polygon(0 0, 75% 0, 100% 100%, 25% 100%);
-        left: 11vw;
-        top: -5vw;
-        position: relative;
+        height: 100%;
+        width: 15vw;
         transition: transform 0.3s ease-in-out, opacity 1.0s ease-in-out;
-        opacity: 1;
     }
-/* karusese nuotrauku nustatymai*/
+
+    /* karusese nuotrauku nustatymai*/
+
+    #imgList3 {
+        border: 1px solid rgba(255, 0, 0, 0);
+        height: 10vw;
+        display: flex;
+        overflow: hidden;
+        flex-direction: row;
+        /*clip-path: polygon(0px 0px, 95.39% -1px, 100% 100%, 0% 100%);*/
+    }
+
+    #imgList3 img {
+        pointer-events: none;
+
+    }
+
+    /* karusese listinimo nustatymai*/
+    #imgList3 ul {
+        list-style-type: none;
+    }
+
+    #imgList3 li {
+        margin-right: 1vw;
+        list-style: none;
+    }
+
+    #imgList3 a {
+        color: #007bff;
+        text-decoration: none;
+        background-color: transparent;
+        width: 10vw;
+        height: 10vw;
+        display: flex;
+    }
+
+    #imgList2 {
+        border: 1px solid rgba(255, 0, 0, 0);
+        height: 10vw;
+        display: flex;
+        overflow: hidden;
+        flex-direction: row;
+        /*clip-path: polygon(0px 0px, 95.39% -1px, 100% 100%, 0% 100%);*/
+    }
+
+    #imgList2 img {
+        pointer-events: none;
+
+    }
+
+    /* karusese listinimo nustatymai*/
+    #imgList2 ul {
+        list-style-type: none;
+    }
+
+    #imgList2 li {
+        margin-right: 1vw;
+        list-style: none;
+    }
+
+    #imgList2 a {
+        color: #007bff;
+        text-decoration: none;
+        background-color: transparent;
+        width: 10vw;
+        height: 10vw;
+        display: flex;
+    }
+
+
     #imgList {
         border: 1px solid rgba(255, 0, 0, 0);
         height: 10vw;
         display: flex;
         overflow: hidden;
         flex-direction: row;
-        clip-path: polygon(0px 0px, 95.39% -1px, 100% 100%, 0% 100%);
+        /*clip-path: polygon(0px 0px, 95.39% -1px, 100% 100%, 0% 100%);*/
     }
-/* karusese listinimo nustatymai*/
+
+    #imgList img {
+        pointer-events: none;
+
+    }
+
+    /* karusese listinimo nustatymai*/
+    #imgList ul {
+        list-style-type: none;
+    }
+
     #imgList li {
-        left: -13vw;
-        position: relative;
-        margin-right: -4vw;
+        margin-right: 1vw;
+        list-style: none;
     }
-/* karusese nuotrauku  reakcijos nuo hove nustatymai*/
+
+    #imgList a {
+        color: #007bff;
+        text-decoration: none;
+        background-color: transparent;
+        width: 10vw;
+        height: 10vw;
+        display: flex;
+    }
+
+    /* karusese nuotrauku  reakcijos nuo hove nustatymai*/
     .video_box_1_atm img:hover {
         transform: scale(1.2);
         z-index: 2;
         opacity: 1;
     }
-/* soninis tekstas karuseles turinys*/
+
+    /* soninis tekstas karuseles turinys*/
     .video_box_2_atm {
         border: 1px solid rgba(0, 0, 255, 0);
         height: 10vw;
@@ -69,9 +152,10 @@
         color: #005d7c;
         font-family: 'Viner Hand ITC', sans-serif;
     }
-/* pagrindinis karuseles box END*/
-/* video info/ iframe playerio/ playlist START*/
-/* animacijos nustatymai kaip atsiranda antra dalis paspaudus ant virsutines karuseles*/
+
+    /* pagrindinis karuseles box END*/
+    /* video info/ iframe playerio/ playlist START*/
+    /* animacijos nustatymai kaip atsiranda antra dalis paspaudus ant virsutines karuseles*/
     #info-row {
         opacity: 0;
         transform: translateY(-100%);
@@ -80,7 +164,8 @@
         font-size: clamp(0.1rem, 2vw, 3rem);
         color: #005d7c;
     }
-/* playlist nustatymai START */
+
+    /* playlist nustatymai START */
     #info-row li {
         text-decoration: none;
         border: 0.25vw solid rgba(255, 0, 0, 0);
@@ -130,14 +215,16 @@
         width: 100%;
         padding-left: 0;
     }
-/* dainu playlist virsutine dalis */
+
+    /* dainu playlist virsutine dalis */
     .antras_dainu_meniu {
         clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 100% 70%, 100% 100%, 5% 100%, 0% 70%, 0% 30%);
         background-color: #005d7c;
         color: white;
         font-size: clamp(0.1rem, 2vw, 3rem);
     }
-/* dainu playlist virsutine dalies teksto lygiavimas */
+
+    /* dainu playlist virsutine dalies teksto lygiavimas */
     .antras_dainu_meniu p {
         display: flex;
         align-items: center;
@@ -145,8 +232,9 @@
         margin: 0;
 
     }
-/* playlist nustatymai END */
-/* Video playerio nustatymai START */
+
+    /* playlist nustatymai END */
+    /* Video playerio nustatymai START */
     .atm-video_playeris {
         border-top: 1vw solid #005d7c;
         border-right: 1vw solid #005d7c;
@@ -156,7 +244,8 @@
         align-items: center;
         justify-content: center;
     }
-/* background nuotraukos kaip nera nieko paleista nustatymai */
+
+    /* background nuotraukos kaip nera nieko paleista nustatymai */
     .atm-video_playeris iframe {
         background-color: rgba(0, 93, 124, 0);
         height: 30vw;
@@ -173,7 +262,8 @@
         border-top: 1vw solid rgba(255, 255, 255, 0);
         border-right: 1vw solid rgba(255, 255, 255, 0);
     }
-/* Video playerio nustatymai END */
+
+    /* Video playerio nustatymai END */
 </style>
 
 <body>
@@ -183,19 +273,23 @@
         <div class="col-md-9 col-sm-9 col-9 video_box_1_atm flex-grow-0 flex-shrink-0">
             <div class="scroll-arrow left" id="scrollLeft"><i class="fa fa-chevron-left"></i></div>
             {{-- pirmas logotipas islaikyta pozicia ir forma --}}
-            <div style="position: relative;left: -7.1vw;z-index: 3;">
-                <img src="../img/popart.png" alt="foto" draggable="false" style="clip-path: polygon(0 0, 75% 0, 100% 100%, 0% 100%);pointer-events: none;"></div>
+            <div >
+                <img src="../img/porpartlogotipas.png" alt="foto" draggable="false"
+                     style="/*clip-path: polygon(0 0, 75% 0, 100% 100%, 0% 100%)*/;pointer-events: none;"></div>
             {{-- grupuoja pagal grupes paima ju foto, paspaudus prideda grupes pavadimima http://localhost/video_playeris_video/Hiperbole  --}}
             <ul id="imgList">
                 @foreach($groups as $group)
-                    <li>
-                        <a href="/video_playeris_video/{{ $group->group }}">
-                            <img src="{{ $group->photo }}" alt="foto" draggable="false">
-                        </a>
-                    </li>
+                    @if($group->group == "popart")
+                        <li>
+                            <a href="/video_playeris_video/{{ $group->group }}" draggable="false">
+                                <img src="{{ $group->photo }}" alt="foto" draggable="false">
+                            </a>
+                        </li>
+                    @endif
                 @endforeach
             </ul>
             <div class="scroll-arrow right" id="scrollRight"><i class="fa fa-chevron-right"></i></div>
+
         </div>
         {{-- desinysis tekstas karuseles --}}
         <div class="col-md-3 col-sm-3 col-3 video_box_2_atm flex-grow-0 flex-shrink-0">
@@ -205,6 +299,76 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Visų
                 festivalių organizatorius ir rengėjas<br><br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;„Pop
+                centras“
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        {{--karuseles pradzia, <i class="fa fa-chevron-left"></i> nematomi elementai reguliuoja atstumus--}}
+        <div class="col-md-9 col-sm-9 col-9 video_box_1_atm flex-grow-0 flex-shrink-0">
+            <div class="scroll-arrow left" id="scrollLeft2"><i class="fa fa-chevron-left"></i></div>
+            {{--antras logotipas islaikyta pozicia ir forma--}}
+            <div>
+                <img src="../img/popartmarathon.png" alt="foto" draggable="false"
+                     style="/*clip-path: polygon(0 0, 75% 0, 100% 100%, 0% 100%)*/;pointer-events: none;">
+            </div>
+            {{--grupuoja pagal grupes paima ju foto, paspaudus prideda grupes pavadimima http://localhost/video_playeris_video/123--}}
+            <ul id="imgList2">
+                @foreach($groups as $group)
+                    @if($group->group == "popmarathon")
+                        <li>
+                            <a href="/video_playeris_video/{{ $group->group }}" draggable="false">
+                                <img src="{{ $group->photo }}" alt="foto" draggable="false">
+                            </a>
+                        </li>
+                    @endif
+                @endforeach
+            </ul>
+            <div class="scroll-arrow right" id="scrollRight2"><i class="fa fa-chevron-right"></i></div>
+        </div>
+        {{--desinysis tekstas karuseles--}}
+        <div class="col-md-3 col-sm-3 col-3 video_box_2_atm flex-grow-0 flex-shrink-0">
+            <p>
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"POPMARATHON" <br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lietuvos kitų muzikos žanrų renginys<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Organizuoja
+                „Kitų renginių organizatorius“<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;„Kitų
+                centras“
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        {{--karuseles pradzia, <i class="fa fa-chevron-left"></i> nematomi elementai reguliuoja atstumus--}}
+        <div class="col-md-9 col-sm-9 col-9 video_box_1_atm flex-grow-0 flex-shrink-0">
+            <div class="scroll-arrow left" id="scrollLeft3"><i class="fa fa-chevron-left"></i></div>
+            {{--antras logotipas islaikyta pozicia ir forma--}}
+            <div style="scale: 1.3;">
+                <img src="../img/kita.png" alt="foto" draggable="false"
+                     style="/*clip-path: polygon(0 0, 75% 0, 100% 100%, 0% 100%)*/;pointer-events: none;">
+            </div>
+            {{--grupuoja pagal grupes paima ju foto, paspaudus prideda grupes pavadimima http://localhost/video_playeris_video/123--}}
+            <ul id="imgList3">
+                @foreach($groups as $group)
+                    @if($group->group == "kiti")
+                        <li>
+                            <a href="/video_playeris_video/{{ $group->group }}" draggable="false">
+                                <img src="{{ $group->photo }}" alt="foto" draggable="false">
+                            </a>
+                        </li>
+                    @endif
+                @endforeach
+            </ul>
+            <div class="scroll-arrow right" id="scrollRight3"><i class="fa fa-chevron-right"></i></div>
+        </div>
+        {{--desinysis tekstas karuseles--}}
+        <div class="col-md-3 col-sm-3 col-3 video_box_2_atm flex-grow-0 flex-shrink-0">
+            <p>
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Kiti" <br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lietuvos kitų muzikos žanrų renginys<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Organizuoja
+                „Kitų renginių organizatorius“<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;„Kitų
                 centras“
             </p>
         </div>
@@ -272,6 +436,88 @@
     // When the mouse leaves the ul, reset the isDragging flag and stop following the mouse cursor
     imgList.addEventListener('mouseleave', (event) => {
         isDragging = false;
+    });
+
+    imgList.addEventListener("wheel", (event) => {
+        event.preventDefault();
+        imgList.scrollLeft += event.deltaY * 1.5;
+    });
+
+
+    var imgList2 = document.getElementById('imgList2');
+    var scrollLeft2 = document.getElementById('scrollLeft2');
+    var scrollRight2 = document.getElementById('scrollRight2');
+    var isDragging2 = false;
+    var startX2, scrollLeftStart2;
+
+    // When a user presses the mouse button down on the ul, store the current mouse position and set the isDragging flag
+    imgList2.addEventListener('mousedown', (event) => {
+        if (event.button !== 0) return;
+        isDragging2 = true;
+        startX2 = event.pageX - imgList2.offsetLeft;
+        scrollLeftStart2 = imgList2.scrollLeft;
+    });
+
+    // When a user moves the mouse while dragging, calculate the distance they have dragged and update the scroll position of the ul accordingly
+    document.addEventListener('mousemove', (event) => {
+        if (!isDragging2) return;
+        event.preventDefault();
+        const x = event.pageX - imgList2.offsetLeft;
+        const distance = (x - startX2) * 1.5;
+        imgList2.scrollLeft = scrollLeftStart2 - distance;
+    });
+
+    // When a user releases the mouse button, reset the isDragging flag and stop following the mouse cursor
+    document.addEventListener('mouseup', (event) => {
+        if (event.button !== 0) return;
+        isDragging2 = false;
+    });
+
+    // When the mouse leaves the ul, reset the isDragging flag and stop following the mouse cursor
+    imgList2.addEventListener('mouseleave', (event) => {
+        isDragging2 = false;
+    });
+
+    imgList2.addEventListener("wheel", (event) => {
+        event.preventDefault();
+        imgList2.scrollLeft += event.deltaY * 1.5;
+    });
+    var imgList3 = document.getElementById('imgList3');
+    var scrollLeft3 = document.getElementById('scrollLeft3');
+    var scrollRight3 = document.getElementById('scrollRight3');
+    var isDragging3 = false;
+    var startX3, scrollLeftStart3;
+
+    // When a user presses the mouse button down on the ul, store the current mouse position and set the isDragging flag
+    imgList3.addEventListener('mousedown', (event) => {
+        if (event.button !== 0) return;
+        isDragging3 = true;
+        startX3 = event.pageX - imgList3.offsetLeft;
+        scrollLeftStart3 = imgList3.scrollLeft;
+    });
+
+    // When a user moves the mouse while dragging, calculate the distance they have dragged and update the scroll position of the ul accordingly
+    imgList3.addEventListener('mousemove', (event) => {
+        if (!isDragging3) return;
+        event.preventDefault();
+        const x = event.pageX - imgList3.offsetLeft;
+        const distance = (x - startX3) * 1.5;
+        imgList3.scrollLeft = scrollLeftStart3 - distance;
+    });
+
+    // When a user releases the mouse button, reset the isDragging flag and stop following the mouse cursor
+    imgList3.addEventListener('mouseup', (event) => {
+        if (event.button !== 0) return;
+        isDragging3 = false;
+    });
+
+    // When the mouse leaves the ul, reset the isDragging flag and stop following the mouse cursor
+    imgList3.addEventListener('mouseleave', (event) => {
+        isDragging3 = false;
+    });
+    imgList3.addEventListener("wheel", (event) => {
+        event.preventDefault();
+        imgList3.scrollLeft += event.deltaY * 1.5;
     });
 
     /*dainu sarasas*/
